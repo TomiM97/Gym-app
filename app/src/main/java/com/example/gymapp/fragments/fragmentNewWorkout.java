@@ -1,7 +1,9 @@
 package com.example.gymapp.fragments;
 
+import android.content.Context;
 import android.os.Bundle;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
@@ -30,6 +32,9 @@ public class fragmentNewWorkout extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_new_workout, container, false);
+
+        AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(view.getContext());
+        final View addExercisePopupView = getLayoutInflater().inflate(R.layout.popup_add_exercise, null);
 
 
 
