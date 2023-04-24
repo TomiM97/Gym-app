@@ -19,6 +19,47 @@ public class User {
         //TODO this.age =
     }
 
+
+    public void setWorkouts(ArrayList<Workout> workouts) {
+        this.workouts = workouts;
+    }
+
+    public void setBmi(float bmi) {
+        this.bmi = bmi;
+    }
+
+    public float getWeight() {
+        return weight;
+    }
+
+    public void setWeight(float weight) {
+        this.weight = weight;
+    }
+
+    public float getHeight() {
+        return height;
+    }
+
+    public void setHeight(float height) {
+        this.height = height;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
+    }
+
+    public Date getBirthDay() {
+        return birthDay;
+    }
+
+    public void setBirthDay(Date birthDay) {
+        this.birthDay = birthDay;
+    }
+
     public ArrayList<Workout> getWorkouts() {
         return workouts;
     }
