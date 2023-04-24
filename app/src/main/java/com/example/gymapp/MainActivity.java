@@ -12,6 +12,8 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
     }
 
-    System.out.println("kakka");
+    public void kakkaaksdee(){
+        System.out.println("Mulla on vitun pieni muna");
+    }
     
 }
