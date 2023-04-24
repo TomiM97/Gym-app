@@ -5,6 +5,8 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
 import androidx.viewpager2.adapter.FragmentStateAdapter;
 
+import com.example.gymapp.fragments.FragmentFrontPage;
+
 public class TabPagerAdapter extends FragmentStateAdapter{
     public TabPagerAdapter(@NonNull FragmentActivity fragmentActivity) {
         super(fragmentActivity);
