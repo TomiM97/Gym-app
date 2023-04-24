@@ -45,8 +45,5 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    public void kakkaaksdee(){
-        System.out.println("Mulla on vitun pieni muna");
-    }
     
 }
