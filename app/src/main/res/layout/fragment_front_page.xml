@@ -15,13 +15,22 @@
 
         <CalendarView
             android:id="@+id/calendarView2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="236dp"
+            android:layout_width="414dp"
+            android:layout_height="332dp"
+            android:layout_marginBottom="312dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.491"
             app:layout_constraintStart_toStartOf="parent" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:layout_width="409dp"
+            android:layout_height="303dp"
+            android:layout_marginTop="5dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/calendarView2" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </FrameLayout>
