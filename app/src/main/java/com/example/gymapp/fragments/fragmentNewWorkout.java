@@ -5,12 +5,14 @@ import android.os.Bundle;
 import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
 
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 
+import com.example.gymapp.Exercise;
 import com.example.gymapp.R;
 
 import java.util.ArrayList;
@@ -68,45 +70,61 @@ public class fragmentNewWorkout extends Fragment {
                 popupAddExercise.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        String txtNewExercise = newExercise.getText().toString();
-                        if(repsInteger != null) {
-                            int intRepsInteger = Integer.parseInt(repsInteger.getText().toString());
-                        }
-                        if(weightsFloat != null) {
-                            float floatWeightsFloat = Float.parseFloat(weightsFloat.getText().toString());
-                        }
-                        if(repsInteger2 != null) {
-                            int intRepsInteger2 = Integer.parseInt(repsInteger2.getText().toString());
-                        }
-                        if(weightsFloat2 != null) {
-                            float floatWeightsFloat2 = Float.parseFloat(weightsFloat2.getText().toString());
-                        }
-                        if(repsInteger3 != null) {
-                            int intRepsInteger3 = Integer.parseInt(repsInteger3.getText().toString());
-                        }
-                        if(weightsFloat3 != null) {
-                            float floatWeightsFloat3 = Float.parseFloat(weightsFloat3.getText().toString());
-                        }
-                        if(repsInteger4 != null) {
-                            int intRepsInteger4 = Integer.parseInt(repsInteger4.getText().toString());
-                        }
-                        if(weightsFloat4 != null) {
-                            float floatWeightsFloat4 = Float.parseFloat(weightsFloat4.getText().toString());
-                        }
-                        if(repsInteger5 != null) {
-                            int intRepsInteger5 = Integer.parseInt(repsInteger5.getText().toString());
-                        }
-                        if(weightsFloat5 != null) {
-                            float floatWeightsFloat5 = Float.parseFloat(weightsFloat5.getText().toString());
-                        }
-                        if(repsInteger6 != null) {
-                            int intRepsInteger6 = Integer.parseInt(repsInteger6.getText().toString());
-                        }
-                        if(weightsFloat6 != null) {
-                            float floatWeightsFloat6 = Float.parseFloat(weightsFloat6.getText().toString());
-                        }
                         ArrayList<Integer> repsList = new ArrayList<>();
                         ArrayList<Float> weightsList = new ArrayList<>();
+
+                        String txtNewExercise = newExercise.getText().toString();
+
+                        if(!TextUtils.isEmpty(repsInteger.getText().toString())) {
+                            int intRepsInteger = Integer.parseInt(repsInteger.getText().toString());
+                            repsList.add(intRepsInteger);
+                        }
+                        if(!TextUtils.isEmpty(weightsFloat.getText().toString())) {
+                            float floatWeightsFloat = Float.parseFloat(weightsFloat.getText().toString());
+                            weightsList.add(floatWeightsFloat);
+                        }
+                        if(!TextUtils.isEmpty(repsInteger2.getText().toString())) {
+                            int intRepsInteger2 = Integer.parseInt(repsInteger2.getText().toString());
+                            repsList.add(intRepsInteger2);
+                        }
+                        if(!TextUtils.isEmpty(weightsFloat2.getText().toString())) {
+                            float floatWeightsFloat2 = Float.parseFloat(weightsFloat2.getText().toString());
+                            weightsList.add(floatWeightsFloat2);
+                        }
+                        if(!TextUtils.isEmpty(repsInteger3.getText().toString())) {
+                            int intRepsInteger3 = Integer.parseInt(repsInteger3.getText().toString());
+                            repsList.add(intRepsInteger3);
+                        }
+                        if(!TextUtils.isEmpty(weightsFloat3.getText().toString())) {
+                            float floatWeightsFloat3 = Float.parseFloat(weightsFloat3.getText().toString());
+                            weightsList.add(floatWeightsFloat3);
+                        }
+                        if(!TextUtils.isEmpty(repsInteger4.getText().toString())) {
+                            int intRepsInteger4 = Integer.parseInt(repsInteger4.getText().toString());
+                            repsList.add(intRepsInteger4);
+                        }
+                        if(!TextUtils.isEmpty(weightsFloat4.getText().toString())) {
+                            float floatWeightsFloat4 = Float.parseFloat(weightsFloat4.getText().toString());
+                            weightsList.add(floatWeightsFloat4);
+                        }
+                        if(!TextUtils.isEmpty(repsInteger5.getText().toString())) {
+                            int intRepsInteger5 = Integer.parseInt(repsInteger5.getText().toString());
+                            repsList.add(intRepsInteger5);
+                        }
+                        if(!TextUtils.isEmpty(weightsFloat5.getText().toString())) {
+                            float floatWeightsFloat5 = Float.parseFloat(weightsFloat5.getText().toString());
+                            weightsList.add(floatWeightsFloat5);
+                        }
+                        if(!TextUtils.isEmpty(repsInteger6.getText().toString())) {
+                            int intRepsInteger6 = Integer.parseInt(repsInteger6.getText().toString());
+                            repsList.add(intRepsInteger6);
+                        }
+                        if(!TextUtils.isEmpty(weightsFloat6.getText().toString())) {
+                            float floatWeightsFloat6 = Float.parseFloat(weightsFloat6.getText().toString());
+                            weightsList.add(floatWeightsFloat6);
+                        }
+
+
 
                     }
                 });
