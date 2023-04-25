@@ -66,7 +66,20 @@ public class fragmentNewWorkout extends Fragment {
                 popupAddExercise.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        //TODO tässä lisätään Workout-olion exercises listaan yksi Exercise olio
+                        String txtNewExercise = newExercise.getText().toString();
+                        int intRepsInteger = Integer.parseInt(repsInteger.getText().toString());
+                        float floatWeightsFloat = Float.parseFloat(repsInteger.getText().toString());
+                        int intRepsInteger2 = Integer.parseInt(repsInteger2.getText().toString());
+                        float floatWeightsFloat2 = Float.parseFloat(repsInteger2.getText().toString());
+                        int intRepsInteger3 = Integer.parseInt(repsInteger3.getText().toString());
+                        float floatWeightsFloat3 = Float.parseFloat(repsInteger3.getText().toString());
+                        int intRepsInteger4 = Integer.parseInt(repsInteger4.getText().toString());
+                        float floatWeightsFloat4 = Float.parseFloat(repsInteger4.getText().toString());
+                        int intRepsInteger5 = Integer.parseInt(repsInteger5.getText().toString());
+                        float floatWeightsFloat5 = Float.parseFloat(repsInteger5.getText().toString());
+                        int intRepsInteger6 = Integer.parseInt(repsInteger6.getText().toString());
+                        float floatWeightsFloat6 = Float.parseFloat(repsInteger6.getText().toString());
+
                     }
                 });
 
@@ -79,10 +92,6 @@ public class fragmentNewWorkout extends Fragment {
                 });
             }
         });
-
-
-
-
         return view;
     }
 }

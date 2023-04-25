@@ -1,13 +1,15 @@
 package com.example.gymapp;
 
+import java.util.ArrayList;
+
 public class Exercise {
-    public float workoutWeights;
+    public ArrayList<Float> workoutWeights;
     public int sets;
-    public int reps;
+    public ArrayList<Integer> reps;
     public String workoutName;
     private static Exercise shoppingListInstance = null;
 
-    public Exercise(float workoutWeights, int sets, int reps, String workoutName) {
+    public Exercise(ArrayList<Float> workoutWeights, int sets, ArrayList<Integer> reps, String workoutName) {
         this.workoutWeights = workoutWeights;
         this.sets = sets;
         this.reps = reps;
