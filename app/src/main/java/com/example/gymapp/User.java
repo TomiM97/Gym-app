@@ -1,18 +1,25 @@
 package com.example.gymapp;
 
+import android.os.Build;
+
 import java.util.ArrayList;
 import java.util.Date;
 
 public class User {
     public ArrayList<Workout> workouts;
     public float bmi;
-    public float weight;
+    public Weight weight;
     public float height;
     public int age;
     public Date birthDay;
+    private Date dateNow;
 
     public User(float weight, float height, Date birthDay) {
-        this.weight = weight;
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            dateNow = new Date();
+        }
+        this.weight = new Weight(weight, dateNow);
+        Weight.getInstance().addWeight(this.weight);
         this.height = height;
         this.birthDay = birthDay;
         this.bmi = weight/(height*height);
@@ -26,14 +33,6 @@ public class User {
 
     public void setBmi(float bmi) {
         this.bmi = bmi;
-    }
-
-    public float getWeight() {
-        return weight;
-    }
-
-    public void setWeight(float weight) {
-        this.weight = weight;
     }
 
     public float getHeight() {
