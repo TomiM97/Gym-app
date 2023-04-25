@@ -23,7 +23,6 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
                 fragmentArea.setCurrentItem(tab.getPosition());
-                System.out.println("Vili oli täällä");
             }
 
             @Override
