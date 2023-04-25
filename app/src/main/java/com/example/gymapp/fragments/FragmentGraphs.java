@@ -9,6 +9,9 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.gymapp.R;
+import com.jjoe64.graphview.GraphView;
+import com.jjoe64.graphview.series.DataPoint;
+import com.jjoe64.graphview.series.LineGraphSeries;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -60,7 +63,16 @@ public class FragmentGraphs extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_graphs, container, false);
+        View view = inflater.inflate(R.layout.fragment_graphs, container, false);
+        GraphView graphExercise = view.findViewById(R.id.progressgraph);
+        LineGraphSeries<DataPoint> series = new LineGraphSeries<>();
+        double y;
+        for (int x=0; x<90; x++){
+            y = Math.sin(2*x*0.2)-Math.sin(x*0.2);
+            series.appendData(new DataPoint(x,y), true,90);
+        }
+        graphExercise.addSeries(series);
+
+        return view;
     }
 }

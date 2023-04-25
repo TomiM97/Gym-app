@@ -6,6 +6,7 @@ import androidx.viewpager2.widget.ViewPager2;
 import android.os.Bundle;
 
 import com.google.android.material.tabs.TabLayout;
+import com.jjoe64.graphview.GraphView;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -15,6 +16,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         TabLayout tabLayout = findViewById(R.id.tabArea);
+
         ViewPager2 fragmentArea = findViewById(R.id.fragmentArea);
         TabPagerAdapter tabPagerAdapter = new TabPagerAdapter(this);
         fragmentArea.setAdapter(tabPagerAdapter);
