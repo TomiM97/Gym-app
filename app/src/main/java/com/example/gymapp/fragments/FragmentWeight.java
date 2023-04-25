@@ -21,8 +21,6 @@ import java.util.Date;
 
 public class FragmentWeight extends Fragment {
 
-    GraphView graphView;
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
