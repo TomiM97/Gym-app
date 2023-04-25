@@ -58,7 +58,7 @@ public class FragmentWeight extends Fragment {
             }
         });
 
-
+        //LineGraphSeries<DataPoint> series = new LineGraphSeries<DataPoint>()
 
         return view;
     }
