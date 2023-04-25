@@ -38,7 +38,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="30dp"
             android:ems="10"
-            android:hint="Päivämäärä (xx.xx.xxxx)"
+            android:hint="Päivämäärä (pp.kk.vvvv)"
             android:inputType="date"
             app:layout_constraintEnd_toEndOf="@+id/editWeight"
             app:layout_constraintStart_toStartOf="@+id/editWeight"
