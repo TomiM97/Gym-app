@@ -30,4 +30,12 @@ public class Weight {
         this.weightDates.add(weight.date);
     }
 
+    public ArrayList<Float> getWeights() {
+        return this.weightList;
+    }
+
+    public ArrayList<Date> getWeightDates() {
+        return this.weightDates;
+    }
+
 }

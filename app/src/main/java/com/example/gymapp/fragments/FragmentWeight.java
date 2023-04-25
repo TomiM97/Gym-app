@@ -1,8 +1,11 @@
 package com.example.gymapp.fragments;
 
+import android.os.Build;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.text.Editable;
 import android.view.LayoutInflater;
@@ -14,6 +17,8 @@ import android.widget.EditText;
 import com.example.gymapp.R;
 import com.example.gymapp.Weight;
 import com.jjoe64.graphview.GraphView;
+import com.jjoe64.graphview.series.DataPoint;
+import com.jjoe64.graphview.series.LineGraphSeries;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -53,10 +58,21 @@ public class FragmentWeight extends Fragment {
 
                 editWeight.setText("");
                 editDate.setText("");
+
             }
         });
 
-        //LineGraphSeries<DataPoint> series = new LineGraphSeries<DataPoint>()
+        LineGraphSeries<DataPoint> series = new LineGraphSeries<DataPoint>();
+        Float weight1;
+        Date date1;
+        for(int i = 0; i < Weight.getInstance().getWeights().size(); i++) {
+            weight1 = Weight.getInstance().getWeights().get(i);
+            date1 = Weight.getInstance().getWeightDates().get(i);
+            series.appendData(new DataPoint(date1, weight1), true, 90);
+        }
+        weightGraph.addSeries(series);
+
+
 
         return view;
     }
