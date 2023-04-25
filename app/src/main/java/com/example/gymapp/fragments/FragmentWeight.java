@@ -13,6 +13,7 @@ import android.widget.EditText;
 
 import com.example.gymapp.R;
 import com.example.gymapp.Weight;
+import com.jjoe64.graphview.GraphView;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;

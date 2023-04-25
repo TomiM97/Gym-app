@@ -33,15 +33,7 @@ public class FragmentGraphs extends Fragment {
         // Required empty public constructor
     }
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment FragmentGraphs.
-     */
-    // TODO: Rename and change types and number of parameters
+
     public static FragmentGraphs newInstance(String param1, String param2) {
         FragmentGraphs fragment = new FragmentGraphs();
         Bundle args = new Bundle();
@@ -72,6 +64,7 @@ public class FragmentGraphs extends Fragment {
             series.appendData(new DataPoint(x,y), true,90);
         }
         graphExercise.addSeries(series);
+
 
         return view;
     }
