@@ -43,5 +43,16 @@
             app:layout_constraintEnd_toEndOf="@+id/editWeight"
             app:layout_constraintStart_toStartOf="@+id/editWeight"
             app:layout_constraintTop_toBottomOf="@+id/editWeight" />
+
+        <com.jjoe64.graphview.GraphView
+            android:id="@+id/weightGraph"
+            android:layout_width="411dp"
+            android:layout_height="342dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/editDate">
+
+        </com.jjoe64.graphview.GraphView>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </FrameLayout>
