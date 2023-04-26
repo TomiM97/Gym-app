@@ -33,7 +33,7 @@ public class NewWorkoutRVAdapter extends RecyclerView.Adapter<NewWorkoutRVHolder
         // Sets shown dynamically
         String dynamicTxtRVSets = "Setit:\n";
         for (int i = 0; i < exercises.get(position).getSets(); i++ ) {
-            dynamicTxtRVSets = dynamicTxtRVSets.concat(i + "\n");
+            dynamicTxtRVSets = dynamicTxtRVSets.concat(i+1 + "\n");
         }
         holder.dynamicTxtRVSets.setText(dynamicTxtRVSets);
         // Reps shown dynamically
@@ -45,7 +45,7 @@ public class NewWorkoutRVAdapter extends RecyclerView.Adapter<NewWorkoutRVHolder
         // Weights shown dynamically
         String dynamicTxtRVWeight = "Paino:\n";
         for (int i = 0; i < exercises.get(position).getSets(); i++ ) {
-            dynamicTxtRVWeight = dynamicTxtRVWeight.concat(exercises.get(position).getWorkoutWeights().get(i) + "\n");
+            dynamicTxtRVWeight = dynamicTxtRVWeight.concat(exercises.get(position).getWorkoutWeights().get(i) + "kg\n");
         }
         holder.dynamicTxtRVWeight.setText(dynamicTxtRVWeight);
     }
