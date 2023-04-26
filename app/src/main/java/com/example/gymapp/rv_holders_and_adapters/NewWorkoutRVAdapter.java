@@ -47,6 +47,7 @@ public class NewWorkoutRVAdapter extends RecyclerView.Adapter<NewWorkoutRVHolder
         for (int i = 0; i < exercises.get(position).getSets(); i++ ) {
             dynamicTxtRVWeight = dynamicTxtRVWeight.concat(exercises.get(position).getWorkoutWeights().get(i) + "\n");
         }
+        holder.dynamicTxtRVWeight.setText(dynamicTxtRVWeight);
     }
 
     @Override

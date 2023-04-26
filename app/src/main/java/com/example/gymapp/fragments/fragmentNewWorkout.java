@@ -4,6 +4,7 @@ import android.os.Bundle;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.text.TextUtils;
 import android.view.LayoutInflater;
@@ -15,6 +16,7 @@ import android.widget.EditText;
 import com.example.gymapp.Exercise;
 import com.example.gymapp.R;
 import com.example.gymapp.Workout;
+import com.example.gymapp.rv_holders_and_adapters.NewWorkoutRVAdapter;
 
 import java.util.ArrayList;
 
@@ -30,6 +32,7 @@ public class fragmentNewWorkout extends Fragment {
             repsInteger3, weightsFloat3, repsInteger4, weightsFloat4, repsInteger5, weightsFloat5,
             repsInteger6, weightsFloat6;
 
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,6 +46,9 @@ public class fragmentNewWorkout extends Fragment {
         View view = inflater.inflate(R.layout.fragment_new_workout, container, false);
 
         Button addExercise = view.findViewById(R.id.btnAddExercise);
+        RecyclerView recyclerView = view.findViewById(R.id.rvNewWorkoutExercises);
+        NewWorkoutRVAdapter newWorkoutRVAdapter = new NewWorkoutRVAdapter(getContext(), Workout.getInstance().getExercises());
+        recyclerView.setAdapter(newWorkoutRVAdapter);
         addExercise.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -133,6 +139,7 @@ public class fragmentNewWorkout extends Fragment {
                             weightsList.add(floatWeightsFloat6);
                         }
                         Workout.getInstance().addExercise(new Exercise(weightsList, sets, repsList, txtNewExercise));
+                        newWorkoutRVAdapter.notifyDataSetChanged();
                         dialog.dismiss();
                     }
                 });
