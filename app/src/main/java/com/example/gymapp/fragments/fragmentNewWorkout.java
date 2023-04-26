@@ -11,6 +11,8 @@ import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
 
@@ -29,9 +31,10 @@ public class fragmentNewWorkout extends Fragment {
 
     private Button btnAddExercise, btnSaveWorkout;
     private int sets;
-    private EditText newExercise, repsInteger, weightsFloat, repsInteger2, weightsFloat2,
+    private EditText repsInteger, weightsFloat, repsInteger2, weightsFloat2,
             repsInteger3, weightsFloat3, repsInteger4, weightsFloat4, repsInteger5, weightsFloat5,
             repsInteger6, weightsFloat6;
+    private AutoCompleteTextView newExercise;
 
 
     @Override
@@ -59,6 +62,10 @@ public class fragmentNewWorkout extends Fragment {
                 View addExercisePopupView = getLayoutInflater().inflate(R.layout.popup_add_exercise, null);
 
                 newExercise = addExercisePopupView.findViewById(R.id.txtExerciseName);
+                // Dropdown menu
+                ArrayAdapter<String> adapter = new ArrayAdapter<String>(getContext(), android.R.layout.simple_dropdown_item_1line,
+                        Workout.getInstance().getExerciseNames(Workout.getInstance().getExercises()));
+                newExercise.setAdapter(adapter);
                 repsInteger = addExercisePopupView.findViewById(R.id.txtRepInteger);
                 weightsFloat = addExercisePopupView.findViewById(R.id.txtWeightsFloat);
                 repsInteger2 = addExercisePopupView.findViewById(R.id.txtRepInteger2);
