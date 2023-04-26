@@ -4,6 +4,7 @@ import android.os.Bundle;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.text.TextUtils;
@@ -46,9 +47,12 @@ public class fragmentNewWorkout extends Fragment {
         View view = inflater.inflate(R.layout.fragment_new_workout, container, false);
 
         Button addExercise = view.findViewById(R.id.btnAddExercise);
+        // RecyclerView needs start:
         RecyclerView recyclerView = view.findViewById(R.id.rvNewWorkoutExercises);
+        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         NewWorkoutRVAdapter newWorkoutRVAdapter = new NewWorkoutRVAdapter(getContext(), Workout.getInstance().getExercises());
         recyclerView.setAdapter(newWorkoutRVAdapter);
+        // RecyclerView needs stop.
         addExercise.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

@@ -1,5 +1,9 @@
 package com.example.gymapp;
 
+import android.content.Context;
+
+import com.example.gymapp.rv_holders_and_adapters.NewWorkoutRVAdapter;
+
 import java.sql.Time;
 import java.util.ArrayList;
 import java.util.Date;
@@ -10,6 +14,7 @@ public class Workout {
     public String workoutType;
     public Time workoutTime;
     public Date workoutDate;
+    private Context context;
 
     public Workout() {
         exercises = new ArrayList<Exercise>();
@@ -27,11 +32,13 @@ public class Workout {
         }
         return workoutInstance;
     }
-    public void addExercise(Exercise exercise) { exercises.add(exercise); }
-
-    public ArrayList<Exercise> getExercises() {
-        return exercises;
+    public void addExercise(Exercise exercise) {
+        exercises.add(exercise);
+        NewWorkoutRVAdapter newWorkoutRVAdapter = new NewWorkoutRVAdapter(context, exercises);
+        newWorkoutRVAdapter.notifyDataSetChanged();
     }
+
+    public ArrayList<Exercise> getExercises() { return exercises; }
 
     public String getWorkoutType() { return workoutType; }
 }
