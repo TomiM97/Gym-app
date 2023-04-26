@@ -6,14 +6,14 @@ public class Exercise {
     public ArrayList<Float> workoutWeights;
     public int sets;
     public ArrayList<Integer> reps;
-    public String workoutName;
+    public String exerciseName;
     private static Exercise shoppingListInstance = null;
 
-    public Exercise(ArrayList<Float> workoutWeights, int sets, ArrayList<Integer> reps, String workoutName) {
+    public Exercise(ArrayList<Float> workoutWeights, int sets, ArrayList<Integer> reps, String exerciseName) {
         this.workoutWeights = workoutWeights;
         this.sets = sets;
         this.reps = reps;
-        this.workoutName = workoutName;
+        this.exerciseName = exerciseName;
     }
 
     public Exercise() {}
@@ -25,4 +25,8 @@ public class Exercise {
         return shoppingListInstance;
     }
 
+    public String getExerciseName() { return exerciseName; }
+    public int getSets() { return sets; }
+    public ArrayList<Integer> getReps() { return reps; }
+    public ArrayList<Float> getWorkoutWeights() { return workoutWeights; }
 }

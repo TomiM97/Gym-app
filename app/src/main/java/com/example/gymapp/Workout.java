@@ -11,7 +11,9 @@ public class Workout {
     public Time workoutTime;
     public Date workoutDate;
 
-    public Workout() {}
+    public Workout() {
+        exercises = new ArrayList<Exercise>();
+    }
 
     public Workout(String workoutType, Time workoutTime, Date workoutDate) {
         this.workoutType = workoutType;
@@ -30,4 +32,6 @@ public class Workout {
     public ArrayList<Exercise> getExercises() {
         return exercises;
     }
+
+    public String getWorkoutType() { return workoutType; }
 }
