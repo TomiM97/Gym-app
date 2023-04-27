@@ -24,8 +24,11 @@ public class oneExerciseAdapter extends RecyclerView.Adapter<oneExerciseHolder> 
     }
 
 
+
+    @NonNull
+    @Override
     public oneExerciseHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        return new oneExerciseAdapter(LayoutInflater.from(context).inflate(R.layout.rv_one_exercise, parent, false));
+        return new oneExerciseHolder(LayoutInflater.from(context).inflate(R.layout.rv_one_exercise, parent, false));
     }
 
     @Override
