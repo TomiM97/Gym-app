@@ -70,8 +70,6 @@ public class FragmentGraphs extends Fragment {
             graphExercise.addSeries(series);
 
 
-
-
         chooseExercise.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

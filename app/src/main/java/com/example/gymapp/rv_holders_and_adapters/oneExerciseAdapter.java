@@ -35,16 +35,7 @@ public class oneExerciseAdapter extends RecyclerView.Adapter<oneExerciseHolder> 
     }
 
     @Override
-    public void onBindViewHolder(@NonNull oneExerciseHolder holder, int position) {;
-        holder.rvChoose.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                int position = holder.getAdapterPosition();
-                Workout.getInstance().exercises.get(position);
-
-            }
-        });
-    }
+    public void onBindViewHolder(@NonNull oneExerciseHolder holder, int position) {}
     @Override
     public int getItemCount() {
             return exercises.size();
