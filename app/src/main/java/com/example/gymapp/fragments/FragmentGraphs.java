@@ -72,7 +72,7 @@ public class FragmentGraphs extends Fragment {
         chooseExercise.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent();
+                Intent intent = new Intent(getContext(),ListExercisesActivity.class);
                 startActivity(intent);
             }
         });
