@@ -1,6 +1,7 @@
 package com.example.gymapp.fragments;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.appcompat.app.AlertDialog;
@@ -16,6 +17,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 
 import com.example.gymapp.Exercise;
+import com.example.gymapp.ExerciseListActivity;
 import com.example.gymapp.R;
 import com.example.gymapp.Workout;
 import com.example.gymapp.rv_holders_and_adapters.NewWorkoutRVAdapter;
@@ -31,6 +33,8 @@ import java.util.ArrayList;
  * create an instance of this fragment.
  */
 public class FragmentGraphs extends Fragment {
+
+
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -75,6 +79,17 @@ public class FragmentGraphs extends Fragment {
             series.appendData(new DataPoint(x,y), true,90);
         }
         graphExercise.addSeries(series);
+
+        Button chooseExercise = view.findViewById(R.id.btnshowExercise);
+        chooseExercise.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(String.valueOf(ExerciseListActivity.class));
+                startActivity(intent);
+            }
+        });
+
+
         return view;
     }
 }
