@@ -4,12 +4,15 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.gymapp.Exercise;
 import com.example.gymapp.R;
+import com.example.gymapp.Workout;
+import com.example.gymapp.fragments.FragmentGraphs;
 
 import java.util.ArrayList;
 
@@ -32,9 +35,16 @@ public class oneExerciseAdapter extends RecyclerView.Adapter<oneExerciseHolder> 
     }
 
     @Override
-    public void onBindViewHolder(@NonNull oneExerciseHolder holder, int position) {
-    }
+    public void onBindViewHolder(@NonNull oneExerciseHolder holder, int position) {;
+        holder.rvChoose.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                int position = holder.getAdapterPosition();
+                Workout.getInstance().exercises.get(position);
 
+            }
+        });
+    }
     @Override
     public int getItemCount() {
             return exercises.size();

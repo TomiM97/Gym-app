@@ -1,6 +1,9 @@
 package com.example.gymapp.fragments;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -14,18 +17,17 @@ public class ListExercisesActivity extends AppCompatActivity {
 
 
     private Workout workout;
-    private RecyclerView recyclerView;
+    private RecyclerView view;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.popup_all_exerciseslist);
         workout = Workout.getInstance();
 
-        recyclerView = findViewById(R.id.rvExerciselist);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        recyclerView.setAdapter(new oneExerciseAdapter(getApplicationContext(), workout.getExercises()));
+        view = findViewById(R.id.rvExerciselist);
+        view.setLayoutManager(new LinearLayoutManager(this));
+        view.setAdapter(new oneExerciseAdapter(getApplicationContext(), workout.getExercises()));
+        };
     }
 
 
-
-}

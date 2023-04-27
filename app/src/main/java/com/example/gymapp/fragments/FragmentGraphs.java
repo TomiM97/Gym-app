@@ -23,7 +23,6 @@ import com.jjoe64.graphview.series.LineGraphSeries;
 public class FragmentGraphs extends Fragment {
 
 
-
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -59,25 +58,33 @@ public class FragmentGraphs extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_graphs, container, false);
-        GraphView graphExercise = view.findViewById(R.id.progressgraph);
-        LineGraphSeries<DataPoint> series = new LineGraphSeries<>();
-        double y;
-        for (int x=0; x<90; x++){
-            y = Math.sin(2*x*0.2)-Math.sin(x*0.2);
-            series.appendData(new DataPoint(x,y), true,90);
-        }
-        graphExercise.addSeries(series);
-
         Button chooseExercise = view.findViewById(R.id.btnshowExercise);
+
+
+            GraphView graphExercise = view.findViewById(R.id.progressgraph);
+            LineGraphSeries<DataPoint> series = new LineGraphSeries<>();
+            double y = 5;
+            for (int x=0; x<20; x++){;
+                series.appendData(new DataPoint(x,y), true,20);
+            }
+            graphExercise.addSeries(series);
+
+
+
+
         chooseExercise.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getContext(),ListExercisesActivity.class);
+                Intent intent = new Intent(getContext(), ListExercisesActivity.class);
                 startActivity(intent);
             }
         });
 
 
+
+
         return view;
     }
 }
+
+
