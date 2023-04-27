@@ -1,31 +1,19 @@
 package com.example.gymapp.fragments;
 
-import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 
-import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
-import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 
-import com.example.gymapp.Exercise;
-import com.example.gymapp.ExerciseListActivity;
 import com.example.gymapp.R;
-import com.example.gymapp.Workout;
-import com.example.gymapp.rv_holders_and_adapters.NewWorkoutRVAdapter;
 import com.jjoe64.graphview.GraphView;
 import com.jjoe64.graphview.series.DataPoint;
 import com.jjoe64.graphview.series.LineGraphSeries;
-
-import java.util.ArrayList;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -84,7 +72,7 @@ public class FragmentGraphs extends Fragment {
         chooseExercise.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(String.valueOf(ExerciseListActivity.class));
+                Intent intent = new Intent();
                 startActivity(intent);
             }
         });
