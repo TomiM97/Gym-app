@@ -24,18 +24,17 @@ public class oneExerciseAdapter extends RecyclerView.Adapter<oneExerciseHolder> 
     }
 
 
-    public oneExerciseAdapter onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public oneExerciseHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         return new oneExerciseAdapter(LayoutInflater.from(context).inflate(R.layout.rv_one_exercise, parent, false));
     }
 
     @Override
     public void onBindViewHolder(@NonNull oneExerciseHolder holder, int position) {
-
     }
 
     @Override
     public int getItemCount() {
-        return 0;
+            return exercises.size();
     }
 
 }
