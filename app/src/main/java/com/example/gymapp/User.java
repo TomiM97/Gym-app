@@ -15,11 +15,14 @@ public class User {
     private Date dateNow;
 
     public User(float weight, float height, Date birthDay) {
+        /*
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             dateNow = new Date();
         }
         this.weight = new Weight(weight, dateNow);
         Weight.getInstance().addWeight(this.weight);
+
+         */
         this.height = height;
         this.birthDay = birthDay;
         this.bmi = weight/(height*height);

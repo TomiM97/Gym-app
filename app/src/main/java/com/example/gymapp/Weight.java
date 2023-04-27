@@ -5,8 +5,9 @@ import java.util.Date;
 
 public class Weight {
 
-    public ArrayList<Float> weightList = new ArrayList<>();;
-    public ArrayList<Date> weightDates = new ArrayList<>();
+    public ArrayList<Weight> weights = new ArrayList<>();
+    public ArrayList<Date> dates = new ArrayList<>();
+    public ArrayList<Float> weightFloats = new ArrayList<>();
     private Float weightFloat;
     private Date date;
     private static Weight weight = null;
@@ -26,16 +27,23 @@ public class Weight {
     }
 
     public void addWeight(Weight weight) {
-        this.weightList.add(weight.weightFloat);
-        this.weightDates.add(weight.date);
+        weights.add(weight);
+        dates.add(weight.date);
+        weightFloats.add(weight.weightFloat);
     }
 
-    public ArrayList<Float> getWeights() {
-        return this.weightList;
+    public ArrayList<Weight> getWeights() {return weights;}
+
+    public Float getWeightFloat() {
+        return this.weightFloat;
     }
 
-    public ArrayList<Date> getWeightDates() {
-        return this.weightDates;
+    public Date getDate() {
+        return this.date;
     }
+
+    public ArrayList<Date> getDates() {return dates;}
+
+    public ArrayList<Float> getWeightFloats() {return weightFloats;}
 
 }
