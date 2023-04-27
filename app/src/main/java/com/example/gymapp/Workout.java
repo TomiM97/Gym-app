@@ -12,7 +12,6 @@ public class Workout {
     private static Workout workoutInstance = null;
     public ArrayList<Exercise> exercises;
     public String workoutType;
-    public Time workoutTime;
     public Date workoutDate;
     private Context context;
 
@@ -20,10 +19,10 @@ public class Workout {
         exercises = new ArrayList<Exercise>();
     }
 
-    public Workout(String workoutType, Time workoutTime, Date workoutDate) {
+    public Workout(String workoutType, Date workoutDate, ArrayList<Exercise> exercises) {
         this.workoutType = workoutType;
-        this.workoutTime = workoutTime;
         this.workoutDate = workoutDate;
+        this.exercises = exercises;
     }
 
     public static Workout getInstance() {

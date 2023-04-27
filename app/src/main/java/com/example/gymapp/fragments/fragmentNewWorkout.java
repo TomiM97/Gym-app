@@ -21,19 +21,20 @@ import com.example.gymapp.R;
 import com.example.gymapp.Workout;
 import com.example.gymapp.rv_holders_and_adapters.NewWorkoutRVAdapter;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 /**
  * A simple {@link Fragment} subclass.
  * create an instance of this fragment.
  */
 public class fragmentNewWorkout extends Fragment {
-
-    private Button btnAddExercise, btnSaveWorkout;
     private int sets;
     private EditText repsInteger, weightsFloat, repsInteger2, weightsFloat2,
             repsInteger3, weightsFloat3, repsInteger4, weightsFloat4, repsInteger5, weightsFloat5,
-            repsInteger6, weightsFloat6;
+            repsInteger6, weightsFloat6, newWorkoutType, newWorkoutDate;
     private AutoCompleteTextView newExercise;
 
 
@@ -56,6 +57,7 @@ public class fragmentNewWorkout extends Fragment {
         NewWorkoutRVAdapter newWorkoutRVAdapter = new NewWorkoutRVAdapter(getContext(), Workout.getInstance().getExercises());
         recyclerView.setAdapter(newWorkoutRVAdapter);
         // RecyclerView needs stop.
+        // addExercise function
         addExercise.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -162,6 +164,27 @@ public class fragmentNewWorkout extends Fragment {
 
                     }
                 });
+            }
+        });
+        // saveWorkout function
+        Button saveWorkout = view.findViewById(R.id.btnSaveWorkout);
+
+        saveWorkout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                newWorkoutType = view.findViewById(R.id.txtWorkoutType);
+                if (newWorkoutType != null) {
+                    String workoutType = newWorkoutType.toString();
+
+                    newWorkoutDate = view.findViewById(R.id.txtNewWorkoutDate);
+                    Date workoutDate;
+                    try {
+                        workoutDate = new SimpleDateFormat("dd.MM.yyyy").parse(newWorkoutDate.getText().toString());
+                    } catch (ParseException e) {
+                        throw new RuntimeException(e);
+                    }
+                    Workout workout = new Workout(workoutType, workoutDate, Workout.getInstance().getExercises());
+                }
             }
         });
         return view;

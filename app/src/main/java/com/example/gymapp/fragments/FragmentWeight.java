@@ -82,7 +82,7 @@ public class FragmentWeight extends Fragment {
                     series.appendData(new DataPoint(date2, weight1), true, 90);
                 }
                 weightGraph.addSeries(series);
-                weightGraph.getGridLabelRenderer().setLabelFormatter(new DateAsXAxisLabelFormatter(context));
+                //weightGraph.getGridLabelRenderer().setLabelFormatter(new DateAsXAxisLabelFormatter(context));
 
 
             }
