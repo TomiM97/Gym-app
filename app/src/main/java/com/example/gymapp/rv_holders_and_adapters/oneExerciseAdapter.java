@@ -35,7 +35,10 @@ public class oneExerciseAdapter extends RecyclerView.Adapter<oneExerciseHolder> 
     }
 
     @Override
-    public void onBindViewHolder(@NonNull oneExerciseHolder holder, int position) {}
+    public void onBindViewHolder(@NonNull oneExerciseHolder holder, int position) {
+        holder.exerciseName.setText(exercises.get(position).exerciseName);
+
+    }
     @Override
     public int getItemCount() {
             return exercises.size();
