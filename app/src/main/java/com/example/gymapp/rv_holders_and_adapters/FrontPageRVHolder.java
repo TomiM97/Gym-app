@@ -8,10 +8,10 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.gymapp.R;
 
-public class NewWorkoutRVHolder extends RecyclerView.ViewHolder {
+public class FrontPageRVHolder extends RecyclerView.ViewHolder {
     public TextView txtRVExerciseName, dynamicTxtRVSets, dynamicTxtRVRep, dynamicTxtRVWeight;
 
-    public NewWorkoutRVHolder(@NonNull View itemView) {
+    public FrontPageRVHolder(@NonNull View itemView) {
         super(itemView);
         txtRVExerciseName = itemView.findViewById(R.id.txtRVWorkoutType);
         dynamicTxtRVSets = itemView.findViewById(R.id.dynamicTxtRVSets);

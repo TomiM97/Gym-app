@@ -23,14 +23,23 @@
             app:layout_constraintHorizontal_bias="0.491"
             app:layout_constraintStart_toStartOf="parent" />
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:layout_width="409dp"
-            android:layout_height="303dp"
-            android:layout_marginTop="5dp"
-            app:layout_constraintBottom_toBottomOf="parent"
+        <TextView
+            android:id="@+id/txtWorkoutTypeFrontPage"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:textSize="20dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/cvCalendarView" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvFrontPageExercises"
+            android:layout_width="409dp"
+            android:layout_height="240dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txtWorkoutTypeFrontPage" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </FrameLayout>
