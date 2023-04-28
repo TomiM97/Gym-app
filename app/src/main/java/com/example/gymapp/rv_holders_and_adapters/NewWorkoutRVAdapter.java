@@ -49,6 +49,7 @@ public class NewWorkoutRVAdapter extends RecyclerView.Adapter<NewWorkoutRVHolder
         }
         holder.dynamicTxtRVWeight.setText(dynamicTxtRVWeight);
 
+
     }
 
     @Override

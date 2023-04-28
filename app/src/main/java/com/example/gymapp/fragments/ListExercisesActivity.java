@@ -1,6 +1,5 @@
 package com.example.gymapp.fragments;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -18,20 +17,25 @@ import com.jjoe64.graphview.series.LineGraphSeries;
 
 public class ListExercisesActivity extends AppCompatActivity {
 
+    private GraphView graphView;
 
-    private Workout workout;
     private RecyclerView view;
+
+
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.popup_all_exerciseslist);
-        workout = Workout.getInstance();
-
+        Workout workout = Workout.getInstance();
         view = findViewById(R.id.rvExerciselist);
         view.setLayoutManager(new LinearLayoutManager(this));
-        view.setAdapter(new oneExerciseAdapter(getApplicationContext(), workout.getExercises()));
-
-    };
+        view.setAdapter(new oneExerciseAdapter(getApplicationContext(), workout.getExercises(), graphView.findViewById(R.id.progressgraph)));
+        graphView = findViewById(R.id.progressgraph);
     }
+}
+
+
+
+
 
 

@@ -13,6 +13,7 @@ import com.example.gymapp.Exercise;
 import com.example.gymapp.R;
 import com.example.gymapp.Workout;
 import com.example.gymapp.fragments.FragmentGraphs;
+import com.example.gymapp.fragments.ListExercisesActivity;
 import com.jjoe64.graphview.GraphView;
 import com.jjoe64.graphview.series.DataPoint;
 import com.jjoe64.graphview.series.LineGraphSeries;
@@ -25,10 +26,12 @@ public class oneExerciseAdapter extends RecyclerView.Adapter<oneExerciseHolder> 
     private Context context;
     private ArrayList<Exercise> exercises = new ArrayList<>();
     private String exercise;
+    private GraphView graphView;
 
-    public oneExerciseAdapter(Context context, ArrayList<Exercise> exercises) {
+    public oneExerciseAdapter(Context context, ArrayList<Exercise> exercises, GraphView graphView) {
         this.context = context;
         this.exercises = exercises;
+        this.graphView = graphView;
     }
 
 
@@ -41,26 +44,24 @@ public class oneExerciseAdapter extends RecyclerView.Adapter<oneExerciseHolder> 
     @Override
     public void onBindViewHolder(@NonNull oneExerciseHolder holder, int position) {
         holder.exerciseName.setText(exercises.get(position).exerciseName);
-        holder.rvChoose.setOnClickListener(view -> {
-            System.out.println("mulla on pieni pippeli");
-            GraphView graphView = view.findViewById(R.id.progressgraph);
-            LineGraphSeries<DataPoint> series = new LineGraphSeries<>();
-            int pos = holder.getAdapterPosition();
-            exercise = Workout.getInstance().getExercises().get(pos).getExerciseName();
-            System.out.println(exercise + " " + pos);
-            double y = 1;
-            for (int x = 1; x < Workout.getInstance().getExercises().size(); ++x) {
-                if (Objects.equals(exercise, Workout.getInstance().getExercises().get(x).getExerciseName())) {
-                    y = Workout.getInstance().exercises.get(x).getMaxWeight();
-                }
-                series.appendData(new DataPoint(x, y), true, 90);
+        holder.rvChoose.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                LineGraphSeries<DataPoint> series = new LineGraphSeries<>();
+                int position = holder.getAdapterPosition();
+                System.out.println(position + " " + series);
+                GraphView graphView = holder.itemView.findViewById(R.id.progressgraph);
+                double y = Workout.getInstance().exercises.get(position).getMaxWeight();
+                int x = 5;
+                System.out.println(y + " on " + x);
+                    new DataPoint(x, y);
+                graphView.addSeries(series);
             }
-            //graphView.addSeries(series);
         });
-
     }
 
     public int getItemCount() {
         return exercises.size();
     }
+
 }

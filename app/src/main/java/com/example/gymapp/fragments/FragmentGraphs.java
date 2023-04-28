@@ -60,8 +60,6 @@ public class FragmentGraphs extends Fragment {
         View view = inflater.inflate(R.layout.fragment_graphs, container, false);
         Button chooseExercise = view.findViewById(R.id.btnshowExercise);
 
-
-
         chooseExercise.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
