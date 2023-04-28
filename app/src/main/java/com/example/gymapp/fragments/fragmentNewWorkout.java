@@ -15,6 +15,7 @@ import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.example.gymapp.Exercise;
 import com.example.gymapp.R;
@@ -64,29 +65,31 @@ public class fragmentNewWorkout extends Fragment {
         NewWorkoutRVAdapter newWorkoutRVAdapter = new NewWorkoutRVAdapter(getContext(), Workout.getInstance().getExercises());
         recyclerView.setAdapter(newWorkoutRVAdapter);
         // RecyclerView needs stop.
-
+        // Save workout function
         btnSaveWorkout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 if (textWorkoutType != null) {
                     String workoutType = textWorkoutType.getText().toString();
-
+                    String sWorkoutDate = newWorkoutDate.getText().toString();
                     Date workoutDate;
-                    try {
-                        workoutDate = new SimpleDateFormat("dd.MM.yyyy").parse(newWorkoutDate.getText().toString());
-                    } catch (ParseException e) {
-                        throw new RuntimeException(e);
+                    if(!sWorkoutDate.isEmpty()) {
+                        try {
+                            workoutDate = new SimpleDateFormat("dd.MM.yyyy").parse(newWorkoutDate.getText().toString());
+                        } catch (ParseException e) {
+                            throw new RuntimeException(e);
+                        }
+                        Workout workout = new Workout(workoutType, workoutDate, Workout.getInstance().getExercises());
+                        User.getInstance().addWorkoutsToList(workout);
+                    } else {
+                        Toast.makeText(getContext(), "Laita päivämäärä", Toast.LENGTH_SHORT).show();
                     }
-                    Workout workout = new Workout(workoutType, workoutDate, Workout.getInstance().getExercises());
-                    User.getInstance().addWorkoutsToList(workout);
-                    ArrayList<Workout> workouts = User.getInstance().getWorkouts();
-                    for(Workout loopWorkout : workouts) {
-                        System.out.println(loopWorkout.workoutType);
-                    }
+
+
                 }
             }
         });
-
+        // Add exercise function
         addExercise.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -180,17 +183,7 @@ public class fragmentNewWorkout extends Fragment {
                             float floatWeightsFloat6 = Float.parseFloat(weightsFloat6.getText().toString());
                             weightsList.add(floatWeightsFloat6);
                         }
-
-                        String stringDate = newWorkoutDate.getText().toString();
-                        Date date = null;
-                        try {
-                            date = new SimpleDateFormat("dd.MM.yyyy").parse(stringDate);
-                        } catch (ParseException e) {
-                            throw new RuntimeException(e);
-                        }
-                        String workoutName = textWorkoutType.getText().toString();
-
-                        Workout.getInstance().addExercise(new Exercise(weightsList, sets, repsList, txtNewExercise, date));
+                        Workout.getInstance().addExercise(new Exercise(weightsList, sets, repsList, txtNewExercise));
                         newWorkoutRVAdapter.notifyDataSetChanged();
                         dialog.dismiss();
                     }

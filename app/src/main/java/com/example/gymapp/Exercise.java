@@ -6,17 +6,15 @@ import java.util.Date;
 public class Exercise {
     public ArrayList<Float> workoutWeights;
     public int sets;
-    public Date date;
     public ArrayList<Integer> reps;
     public String exerciseName;
     private static Exercise exerciseListInstance = null;
 
-    public Exercise(ArrayList<Float> workoutWeights, int sets, ArrayList<Integer> reps, String exerciseName, Date date) {
+    public Exercise(ArrayList<Float> workoutWeights, int sets, ArrayList<Integer> reps, String exerciseName) {
         this.workoutWeights = workoutWeights;
         this.sets = sets;
         this.reps = reps;
         this.exerciseName = exerciseName;
-        this.date = date;
     }
 
     public Exercise() {}
@@ -36,10 +34,8 @@ public class Exercise {
         float weightMax = 0;
         for (int x=0;x<getWorkoutWeights().size();x++){
             if (weightMax > getWorkoutWeights().get(x)){
-                weightMax = workoutWeights.get(0);
-            } else{
-                    weightMax = getWorkoutWeights().get(x);
-                }
+                weightMax = workoutWeights.get(x);
+            }
             }
         return weightMax;
         }
