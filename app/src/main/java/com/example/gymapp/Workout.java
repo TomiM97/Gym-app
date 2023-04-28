@@ -15,7 +15,7 @@ public class Workout {
     public String workoutType;
     public Time workoutTime;
     public Date workoutDate;
-    private Context context;
+    public Context context;
 
     public Workout() {
         exercises = new ArrayList<Exercise>();
@@ -39,15 +39,9 @@ public class Workout {
     }
     public void clearTempExercises() {
         tempExercises.clear();
-        NewWorkoutRVAdapter newWorkoutRVAdapter = new NewWorkoutRVAdapter(context, exercises);
-        newWorkoutRVAdapter.notifyDataSetChanged();
     }
     public void addExercise(ArrayList<Exercise> tempExercises) {
-        for(int i=0; i<tempExercises.size();i++) {
-            exercises.add(tempExercises.get(i));
-        }
-        NewWorkoutRVAdapter newWorkoutRVAdapter = new NewWorkoutRVAdapter(context, exercises);
-        newWorkoutRVAdapter.notifyDataSetChanged();
+        exercises.addAll(tempExercises);
     }
 
     public ArrayList<Exercise> getExercises() { return exercises; }
