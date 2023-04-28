@@ -18,7 +18,10 @@ import com.example.gymapp.Workout;
 import com.example.gymapp.rv_holders_and_adapters.FrontPageRVAdapter;
 import com.example.gymapp.rv_holders_and_adapters.NewWorkoutRVAdapter;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -49,18 +52,25 @@ public class FragmentFrontPage extends Fragment {
         calendarView.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
             @Override
             public void onSelectedDayChange(@NonNull CalendarView calendarView, int i, int i1, int i2) {
-                String date = i2 + "." + (i1 + 1) + "." + i;
-                ArrayList<Exercise> allExercises = Workout.getInstance().getExercises();
-                ArrayList<Exercise> exercisesForThisDay = new ArrayList<>();
-                for(int x = 0; x < allExercises.size(); x++ ) {
-                    if (allExercises.get(x).getDate().toString().equals(date)) {
-                        System.out.println(allExercises.get(x).getDate().toString() + " " + date);
-                        exercisesForThisDay.add(allExercises.get(x));
+                try {
+                    Date selectedDate = new SimpleDateFormat("dd.MM.yyyy").parse(i2 +"."+ (i1+1) +"."+ i);
+                    ArrayList<Exercise> allExercises = Workout.getInstance().getExercises();
+                    ArrayList<Exercise> exercisesForThisDay = new ArrayList<>();
+                    for(int x = 0; x < allExercises.size(); x++ ) {
+                        System.out.println(allExercises.get(x).getDate().toString() + " " + selectedDate);
+                        assert selectedDate != null;
+                        if (allExercises.get(x).getDate().toString().equals(selectedDate.toString())) {
+                            exercisesForThisDay.add(allExercises.get(x));
+                        }
+                        FrontPageRVAdapter frontPageRVAdapter = new FrontPageRVAdapter(getContext(), exercisesForThisDay);
+                        recyclerView.setAdapter(frontPageRVAdapter);
                     }
-
+                } catch (ParseException e) {
+                    throw new RuntimeException(e);
                 }
-                FrontPageRVAdapter frontPageRVAdapter = new FrontPageRVAdapter(getContext(), exercisesForThisDay);
-                recyclerView.setAdapter(frontPageRVAdapter);
+
+
+
             }
         });
 
