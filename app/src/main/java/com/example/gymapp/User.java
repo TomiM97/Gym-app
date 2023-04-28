@@ -1,11 +1,16 @@
 package com.example.gymapp;
 
+import android.content.Context;
 import android.os.Build;
+
+import com.example.gymapp.rv_holders_and_adapters.FrontPageRVAdapter;
+import com.example.gymapp.rv_holders_and_adapters.NewWorkoutRVAdapter;
 
 import java.util.ArrayList;
 import java.util.Date;
 
 public class User {
+    Context context;
     public ArrayList<Workout> workouts;
     public float bmi;
     public Weight weight;
@@ -26,6 +31,9 @@ public class User {
         //TODO this.age =
     }
 
+    public void addWorkout(Workout workout) {
+        workouts.add(workout);
+    }
 
     public void setWorkouts(ArrayList<Workout> workouts) {
         this.workouts = workouts;
