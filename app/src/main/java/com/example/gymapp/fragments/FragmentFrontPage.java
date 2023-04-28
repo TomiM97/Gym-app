@@ -51,15 +51,15 @@ public class FragmentFrontPage extends Fragment {
             public void onSelectedDayChange(@NonNull CalendarView calendarView, int i, int i1, int i2) {
                 String date = i2 + "." + (i1 + 1) + "." + i;
                 ArrayList<Exercise> allExercises = Workout.getInstance().getExercises();
-                ArrayList<String> exercisesForThisDay = new ArrayList<>();
+                ArrayList<Exercise> exercisesForThisDay = new ArrayList<>();
                 for(int x = 0; x < allExercises.size(); x++ ) {
                     if (allExercises.get(x).getDate().toString().equals(date)) {
                         System.out.println(allExercises.get(x).getDate().toString() + " " + date);
-                        exercisesForThisDay.add(allExercises.get(x).getExerciseName());
+                        exercisesForThisDay.add(allExercises.get(x));
                     }
 
                 }
-                FrontPageRVAdapter frontPageRVAdapter = new FrontPageRVAdapter(getContext(), Workout.getInstance().getExercises());
+                FrontPageRVAdapter frontPageRVAdapter = new FrontPageRVAdapter(getContext(), exercisesForThisDay);
                 recyclerView.setAdapter(frontPageRVAdapter);
             }
         });
