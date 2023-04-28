@@ -41,11 +41,20 @@ public class Workout {
     public ArrayList<Exercise> getExercises() { return exercises; }
 
     public String getWorkoutType() { return workoutType; }
-    public ArrayList<String> getExerciseNames(ArrayList<Exercise> exercises) {
+    public ArrayList<String> getExerciseNamesForDropDownMenu(ArrayList<Exercise> exercises) {
         ArrayList<String> exerciseNames = new ArrayList<>();
         for(int i = 0; i < exercises.size(); i++ ) {
-            exerciseNames.add(exercises.get(i).getExerciseName());
+            Boolean addToList = true;
+            for(int i2 = 0; i2 < exerciseNames.size(); i2++)  {
+                if (exerciseNames.get(i2).equals(exercises.get(i).getExerciseName())) {
+                    addToList = false;
+                }
+            }
+            if(addToList) {
+                exerciseNames.add(exercises.get(i).getExerciseName());
+            }
         }
         return exerciseNames;
     }
+
 }

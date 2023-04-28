@@ -98,7 +98,7 @@ public class fragmentNewWorkout extends Fragment {
                 newExercise = addExercisePopupView.findViewById(R.id.txtExerciseName);
                 // Dropdown menu
                 ArrayAdapter<String> adapter = new ArrayAdapter<String>(getContext(), android.R.layout.simple_dropdown_item_1line,
-                        Workout.getInstance().getExerciseNames(Workout.getInstance().getExercises()));
+                        Workout.getInstance().getExerciseNamesForDropDownMenu(Workout.getInstance().getExercises()));
                 newExercise.setAdapter(adapter);
                 repsInteger = addExercisePopupView.findViewById(R.id.txtRepInteger);
                 weightsFloat = addExercisePopupView.findViewById(R.id.txtWeightsFloat);
