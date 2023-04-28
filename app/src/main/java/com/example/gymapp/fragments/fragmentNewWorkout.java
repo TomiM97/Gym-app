@@ -85,11 +85,10 @@ public class fragmentNewWorkout extends Fragment {
                         ArrayList <Exercise> exercisesToBeDeleted = Workout.getInstance().tempExercises;
                         Workout.getInstance().addExercise(exercisesToBeDeleted);
                         Workout.getInstance().clearTempExercises();
+                        recyclerView.getAdapter().notifyDataSetChanged();
                     } else {
                         Toast.makeText(getContext(), "Laita päivämäärä", Toast.LENGTH_SHORT).show();
                     }
-
-
                 }
             }
         });
