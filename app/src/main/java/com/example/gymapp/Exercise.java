@@ -9,7 +9,7 @@ public class Exercise {
     public Date date;
     public ArrayList<Integer> reps;
     public String exerciseName;
-    private static Exercise exerciseListInsanse = null;
+    private static Exercise exerciseListInstance = null;
 
     public Exercise(ArrayList<Float> workoutWeights, int sets, ArrayList<Integer> reps, String exerciseName, Date date) {
         this.workoutWeights = workoutWeights;
@@ -22,10 +22,10 @@ public class Exercise {
     public Exercise() {}
 
     public static Exercise getInstance() {
-        if (exerciseListInsanse == null) {
-            exerciseListInsanse = new Exercise();
+        if (exerciseListInstance == null) {
+            exerciseListInstance = new Exercise();
         }
-        return exerciseListInsanse;
+        return exerciseListInstance;
     }
 
     public String getExerciseName() { return exerciseName; }
