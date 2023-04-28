@@ -4,7 +4,6 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -12,26 +11,21 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.gymapp.Exercise;
 import com.example.gymapp.R;
 import com.example.gymapp.Workout;
-import com.example.gymapp.fragments.FragmentGraphs;
-import com.example.gymapp.fragments.ListExercisesActivity;
 import com.jjoe64.graphview.GraphView;
 import com.jjoe64.graphview.series.DataPoint;
 import com.jjoe64.graphview.series.LineGraphSeries;
 
 import java.util.ArrayList;
-import java.util.Objects;
 
 public class oneExerciseAdapter extends RecyclerView.Adapter<oneExerciseHolder> {
 
     private Context context;
     private ArrayList<Exercise> exercises = new ArrayList<>();
     private String exercise;
-    private GraphView graphView;
 
-    public oneExerciseAdapter(Context context, ArrayList<Exercise> exercises, GraphView graphView) {
+    public oneExerciseAdapter(Context context, ArrayList<Exercise> exercises) {
         this.context = context;
         this.exercises = exercises;
-        this.graphView = graphView;
     }
 
 
