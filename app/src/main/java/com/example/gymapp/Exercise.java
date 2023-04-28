@@ -33,9 +33,10 @@ public class Exercise {
     public float getMaxWeight(){
         float weightMax = 0;
         for (int x=0;x<getWorkoutWeights().size();x++){
-            if (weightMax > getWorkoutWeights().get(x)){
-                weightMax = workoutWeights.get(x);
+            if (weightMax < getWorkoutWeights().get(x)){
+                weightMax = getWorkoutWeights().get(x);
             }
+            System.out.println(x);
             System.out.println(weightMax);
             }
 
