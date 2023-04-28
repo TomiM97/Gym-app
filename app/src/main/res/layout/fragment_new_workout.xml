@@ -11,16 +11,27 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
+
         <Button
             android:id="@+id/btnAddExercise"
             android:layout_width="180dp"
             android:layout_height="90dp"
-            android:layout_marginTop="80dp"
-            android:fontFamily="@font/aldrich"
+            android:layout_marginStart="4dp"
             android:text="Lisää liike"
             android:textSize="24sp"
-            app:layout_constraintEnd_toStartOf="@+id/btnSaveWorkout"
-            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textWorkoutType" />
+
+        <EditText
+            android:id="@+id/textWorkoutType"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="30dp"
+            android:ems="10"
+            android:hint="Treenin nimi"
+            android:inputType="textPersonName"
+            app:layout_constraintEnd_toStartOf="@+id/txtNewWorkoutDate"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -28,52 +39,35 @@
             android:id="@+id/btnSaveWorkout"
             android:layout_width="180dp"
             android:layout_height="90dp"
-            android:layout_marginTop="80dp"
-            android:fontFamily="@font/aldrich"
             android:text="Tallenna treeni"
             android:textSize="24sp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toEndOf="@+id/btnAddExercise"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toBottomOf="@+id/txtNewWorkoutDate" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rvNewWorkoutExercises"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginTop="180dp"
+            android:layout_width="372dp"
+            android:layout_height="507dp"
+            android:layout_marginTop="84dp"
+            android:layout_marginEnd="16dp"
             android:background="#E6E5E5"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <EditText
-            android:id="@+id/txtWorkoutType"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:ems="10"
-            android:hint="Nimeä treeni"
-            android:inputType="textPersonName"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.1"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintStart_toEndOf="@+id/editWorkoutName"
+            app:layout_constraintTop_toBottomOf="@+id/btnAddExercise" />
 
         <EditText
             android:id="@+id/txtNewWorkoutDate"
             android:layout_width="160dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="140dp"
             android:layout_marginTop="16dp"
+            android:layout_marginEnd="4dp"
             android:ems="10"
             android:hint="Pvm (pp.mm.vvvv)"
             android:inputType="date"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.8"
-            app:layout_constraintStart_toStartOf="@+id/txtWorkoutType"
             app:layout_constraintTop_toTopOf="parent" />
-
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </FrameLayout>

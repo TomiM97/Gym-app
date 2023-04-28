@@ -1,24 +1,21 @@
 package com.example.gymapp;
 
-import android.content.Context;
 import android.os.Build;
-
-import com.example.gymapp.rv_holders_and_adapters.FrontPageRVAdapter;
-import com.example.gymapp.rv_holders_and_adapters.NewWorkoutRVAdapter;
 
 import java.util.ArrayList;
 import java.util.Date;
 
 public class User {
-    Context context;
-    public ArrayList<Workout> workouts;
+    public ArrayList<Workout> workouts = new ArrayList<>();
     public float bmi;
     public Weight weight;
     public float height;
     public int age;
     public Date birthDay;
     private Date dateNow;
+    private static User user = null;
 
+    public User() {}
     public User(float weight, float height, Date birthDay) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             dateNow = new Date();
@@ -31,13 +28,19 @@ public class User {
         //TODO this.age =
     }
 
-    public void addWorkout(Workout workout) {
-        workouts.add(workout);
+    public static User getInstance() {
+        if(user == null) {
+            user = new User();
+        }
+        return user;
     }
+
 
     public void setWorkouts(ArrayList<Workout> workouts) {
         this.workouts = workouts;
     }
+
+    public void addWorkoutsToList(Workout workout) {workouts.add(workout);}
 
     public void setBmi(float bmi) {
         this.bmi = bmi;

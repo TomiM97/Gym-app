@@ -1,28 +1,31 @@
 package com.example.gymapp;
 
 import java.util.ArrayList;
+import java.util.Date;
 
 public class Exercise {
     public ArrayList<Float> workoutWeights;
     public int sets;
+    public Date date;
     public ArrayList<Integer> reps;
     public String exerciseName;
-    private static Exercise shoppingListInstance = null;
+    private static Exercise exerciseListInsanse = null;
 
-    public Exercise(ArrayList<Float> workoutWeights, int sets, ArrayList<Integer> reps, String exerciseName) {
+    public Exercise(ArrayList<Float> workoutWeights, int sets, ArrayList<Integer> reps, String exerciseName, Date date) {
         this.workoutWeights = workoutWeights;
         this.sets = sets;
         this.reps = reps;
         this.exerciseName = exerciseName;
+        this.date = date;
     }
 
     public Exercise() {}
 
     public static Exercise getInstance() {
-        if (shoppingListInstance == null) {
-            shoppingListInstance = new Exercise();
+        if (exerciseListInsanse == null) {
+            exerciseListInsanse = new Exercise();
         }
-        return shoppingListInstance;
+        return exerciseListInsanse;
     }
 
     public String getExerciseName() { return exerciseName; }

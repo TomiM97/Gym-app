@@ -18,6 +18,7 @@ import android.widget.EditText;
 
 import com.example.gymapp.Exercise;
 import com.example.gymapp.R;
+import com.example.gymapp.User;
 import com.example.gymapp.Workout;
 import com.example.gymapp.rv_holders_and_adapters.NewWorkoutRVAdapter;
 
@@ -31,10 +32,12 @@ import java.util.Date;
  * create an instance of this fragment.
  */
 public class fragmentNewWorkout extends Fragment {
+
+    private Button btnSaveWorkout, addExercise;
     private int sets;
-    private EditText repsInteger, weightsFloat, repsInteger2, weightsFloat2,
+    private EditText textWorkoutType, newWorkoutDate, repsInteger, weightsFloat, repsInteger2, weightsFloat2,
             repsInteger3, weightsFloat3, repsInteger4, weightsFloat4, repsInteger5, weightsFloat5,
-            repsInteger6, weightsFloat6, newWorkoutType, newWorkoutDate;
+            repsInteger6, weightsFloat6;
     private AutoCompleteTextView newExercise;
 
 
@@ -50,14 +53,40 @@ public class fragmentNewWorkout extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_new_workout, container, false);
 
-        Button addExercise = view.findViewById(R.id.btnAddExercise);
+        addExercise = view.findViewById(R.id.btnAddExercise);
+        newWorkoutDate = view.findViewById(R.id.txtNewWorkoutDate);
+        textWorkoutType = view.findViewById(R.id.textWorkoutType);
+        btnSaveWorkout = view.findViewById(R.id.btnSaveWorkout);
+
         // RecyclerView needs start:
         RecyclerView recyclerView = view.findViewById(R.id.rvNewWorkoutExercises);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         NewWorkoutRVAdapter newWorkoutRVAdapter = new NewWorkoutRVAdapter(getContext(), Workout.getInstance().getExercises());
         recyclerView.setAdapter(newWorkoutRVAdapter);
         // RecyclerView needs stop.
-        // addExercise function
+
+        btnSaveWorkout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (textWorkoutType != null) {
+                    String workoutType = textWorkoutType.getText().toString();
+
+                    Date workoutDate;
+                    try {
+                        workoutDate = new SimpleDateFormat("dd.MM.yyyy").parse(newWorkoutDate.getText().toString());
+                    } catch (ParseException e) {
+                        throw new RuntimeException(e);
+                    }
+                    Workout workout = new Workout(workoutType, workoutDate, Workout.getInstance().getExercises());
+                    User.getInstance().addWorkoutsToList(workout);
+                    ArrayList<Workout> workouts = User.getInstance().getWorkouts();
+                    for(Workout loopWorkout : workouts) {
+                        System.out.println(loopWorkout.workoutType);
+                    }
+                }
+            }
+        });
+
         addExercise.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -151,7 +180,17 @@ public class fragmentNewWorkout extends Fragment {
                             float floatWeightsFloat6 = Float.parseFloat(weightsFloat6.getText().toString());
                             weightsList.add(floatWeightsFloat6);
                         }
-                        Workout.getInstance().addExercise(new Exercise(weightsList, sets, repsList, txtNewExercise));
+
+                        String stringDate = newWorkoutDate.getText().toString();
+                        Date date = null;
+                        try {
+                            date = new SimpleDateFormat("dd.MM.yyyy").parse(stringDate);
+                        } catch (ParseException e) {
+                            throw new RuntimeException(e);
+                        }
+                        String workoutName = textWorkoutType.getText().toString();
+
+                        Workout.getInstance().addExercise(new Exercise(weightsList, sets, repsList, txtNewExercise, date));
                         newWorkoutRVAdapter.notifyDataSetChanged();
                         dialog.dismiss();
                     }
@@ -164,27 +203,6 @@ public class fragmentNewWorkout extends Fragment {
 
                     }
                 });
-            }
-        });
-        // saveWorkout function
-        Button saveWorkout = view.findViewById(R.id.btnSaveWorkout);
-
-        saveWorkout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                newWorkoutType = view.findViewById(R.id.txtWorkoutType);
-                if (newWorkoutType != null) {
-                    String workoutType = newWorkoutType.toString();
-
-                    newWorkoutDate = view.findViewById(R.id.txtNewWorkoutDate);
-                    Date workoutDate;
-                    try {
-                        workoutDate = new SimpleDateFormat("dd.MM.yyyy").parse(newWorkoutDate.getText().toString());
-                    } catch (ParseException e) {
-                        throw new RuntimeException(e);
-                    }
-                    Workout workout = new Workout(workoutType, workoutDate, Workout.getInstance().getExercises());
-                }
             }
         });
         return view;
