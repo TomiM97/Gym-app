@@ -36,7 +36,9 @@ public class Exercise {
             if (weightMax > getWorkoutWeights().get(x)){
                 weightMax = workoutWeights.get(x);
             }
+            System.out.println(weightMax);
             }
+
         return weightMax;
         }
     }

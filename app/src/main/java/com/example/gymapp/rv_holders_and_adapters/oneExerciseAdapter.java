@@ -41,24 +41,21 @@ public class oneExerciseAdapter extends RecyclerView.Adapter<oneExerciseHolder> 
     @Override
     public void onBindViewHolder(@NonNull oneExerciseHolder holder, int position) {
         holder.exerciseName.setText(exercises.get(position).exerciseName);
-        holder.rvChoose.setOnClickListener(new View.OnClickListener() {
-
-            @Override
-            public void onClick(View view) {
-                GraphView graphView = view.findViewById(R.id.progressgraph);
-                LineGraphSeries<DataPoint> series = new LineGraphSeries<>();
-                int pos = holder.getAdapterPosition();
-                exercise = Workout.getInstance().getExercises().get(pos).getExerciseName();
-                System.out.println(exercise + " " + pos);
-                double y = 1;
-                for (int x = 0; x < Workout.getInstance().getExercises().size(); ++x) {
-                    if (Objects.equals(exercise, Workout.getInstance().getExercises().get(x).getExerciseName())) {
-                        y = Workout.getInstance().exercises.get(x).getMaxWeight();
-                    }
-                    series.appendData(new DataPoint(x, y), true, 90);
+        holder.rvChoose.setOnClickListener(view -> {
+            System.out.println("mulla on pieni pippeli");
+            GraphView graphView = view.findViewById(R.id.progressgraph);
+            LineGraphSeries<DataPoint> series = new LineGraphSeries<>();
+            int pos = holder.getAdapterPosition();
+            exercise = Workout.getInstance().getExercises().get(pos).getExerciseName();
+            System.out.println(exercise + " " + pos);
+            double y = 1;
+            for (int x = 1; x < Workout.getInstance().getExercises().size(); ++x) {
+                if (Objects.equals(exercise, Workout.getInstance().getExercises().get(x).getExerciseName())) {
+                    y = Workout.getInstance().exercises.get(x).getMaxWeight();
                 }
-                graphView.addSeries(series);
+                series.appendData(new DataPoint(x, y), true, 90);
             }
+            //graphView.addSeries(series);
         });
 
     }
