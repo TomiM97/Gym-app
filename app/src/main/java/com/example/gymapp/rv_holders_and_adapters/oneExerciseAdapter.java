@@ -30,6 +30,7 @@ public class oneExerciseAdapter extends RecyclerView.Adapter<oneExerciseHolder> 
     }
 
 
+
     @NonNull
     @Override
     public oneExerciseHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -46,6 +47,7 @@ public class oneExerciseAdapter extends RecyclerView.Adapter<oneExerciseHolder> 
                 System.out.println(position);
                 float y = Workout.getInstance().exercises.get(position).getMaxWeight();
                 holder.DataPoints(position,y);
+                holder.setListener(position);
             }
         });
     }

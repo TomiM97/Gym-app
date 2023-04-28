@@ -16,6 +16,7 @@ public class oneExerciseHolder extends RecyclerView.ViewHolder {
 
     public TextView exerciseName;
     public Button rvChoose;
+    private int listener;
 
     public oneExerciseHolder(@NonNull View itemView) {
         super(itemView);
@@ -28,6 +29,8 @@ public class oneExerciseHolder extends RecyclerView.ViewHolder {
         ListExercisesActivity.getDatapointX(x);
         ListExercisesActivity.getDatapointY(y);
     }
+    public int setListener(int listener){
+        return ListExercisesActivity.Listener(listener);}
 
 
 }
