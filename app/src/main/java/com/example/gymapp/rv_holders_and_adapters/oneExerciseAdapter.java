@@ -14,6 +14,7 @@ import com.example.gymapp.Workout;
 import com.jjoe64.graphview.GraphView;
 import com.jjoe64.graphview.series.DataPoint;
 import com.jjoe64.graphview.series.LineGraphSeries;
+import com.jjoe64.graphview.series.PointsGraphSeries;
 
 import java.util.ArrayList;
 
@@ -41,15 +42,10 @@ public class oneExerciseAdapter extends RecyclerView.Adapter<oneExerciseHolder> 
         holder.rvChoose.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                LineGraphSeries<DataPoint> series = new LineGraphSeries<>();
                 int position = holder.getAdapterPosition();
-                System.out.println(position + " " + series);
-                GraphView graphView = holder.itemView.findViewById(R.id.progressgraph);
-                double y = Workout.getInstance().exercises.get(position).getMaxWeight();
-                int x = 5;
-                System.out.println(y + " on " + x);
-                    new DataPoint(x, y);
-                graphView.addSeries(series);
+                System.out.println(position);
+                float y = Workout.getInstance().exercises.get(position).getMaxWeight();
+                holder.DataPoints(position,y);
             }
         });
     }

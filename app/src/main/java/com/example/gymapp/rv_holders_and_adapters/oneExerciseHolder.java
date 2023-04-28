@@ -23,6 +23,13 @@ public class oneExerciseHolder extends RecyclerView.ViewHolder {
         rvChoose = itemView.findViewById(R.id.rvChoose);
         GraphView graphView = itemView.findViewById(R.id.progressgraph);
     }
+
+    public void DataPoints(int x, float y){
+        ListExercisesActivity.getDatapointX(x);
+        ListExercisesActivity.getDatapointY(y);
     }
+
+
+}
 
 

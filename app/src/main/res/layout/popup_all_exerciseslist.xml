@@ -6,17 +6,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <com.jjoe64.graphview.GraphView
-        android:id="@+id/progressgraph"
-        android:layout_width="403dp"
-        android:layout_height="425dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/rvExerciselist">
-
-    </com.jjoe64.graphview.GraphView>
-
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvExerciselist"
         android:layout_width="412dp"
@@ -24,5 +13,17 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.6"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent">
+
+    </androidx.recyclerview.widget.RecyclerView>
+
+    <com.jjoe64.graphview.GraphView
+        android:id="@+id/progressgraph"
+        android:layout_width="403dp"
+        android:layout_height="425dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/rvExerciselist">
+
+    </com.jjoe64.graphview.GraphView>
 </androidx.constraintlayout.widget.ConstraintLayout>
