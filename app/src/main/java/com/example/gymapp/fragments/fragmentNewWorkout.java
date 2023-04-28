@@ -62,7 +62,7 @@ public class fragmentNewWorkout extends Fragment {
         // RecyclerView needs start:
         RecyclerView recyclerView = view.findViewById(R.id.rvNewWorkoutExercises);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-        NewWorkoutRVAdapter newWorkoutRVAdapter = new NewWorkoutRVAdapter(getContext(), Workout.getInstance().getExercises());
+        NewWorkoutRVAdapter newWorkoutRVAdapter = new NewWorkoutRVAdapter(getContext(), Workout.getInstance().getTempExercises());
         recyclerView.setAdapter(newWorkoutRVAdapter);
         // RecyclerView needs stop.
         // Save workout function
@@ -81,6 +81,10 @@ public class fragmentNewWorkout extends Fragment {
                         }
                         Workout workout = new Workout(workoutType, workoutDate, Workout.getInstance().getExercises());
                         User.getInstance().addWorkoutsToList(workout);
+                        // Empty the RV list
+                        ArrayList <Exercise> exercisesToBeDeleted = Workout.getInstance().tempExercises;
+                        Workout.getInstance().addExercise(exercisesToBeDeleted);
+                        Workout.getInstance().clearTempExercises();
                     } else {
                         Toast.makeText(getContext(), "Laita päivämäärä", Toast.LENGTH_SHORT).show();
                     }
@@ -188,7 +192,7 @@ public class fragmentNewWorkout extends Fragment {
                         if(!sWorkoutDate.isEmpty()) {
                             try {
                                 Date workoutDate = new SimpleDateFormat("dd.MM.yyyy").parse(newWorkoutDate.getText().toString());
-                                Workout.getInstance().addExercise(new Exercise(weightsList, sets, repsList, txtNewExercise, workoutDate));
+                                Workout.getInstance().addTempExercise(new Exercise(weightsList, sets, repsList, txtNewExercise, workoutDate));
                             } catch (ParseException e) {
                                 throw new RuntimeException(e);
                             }

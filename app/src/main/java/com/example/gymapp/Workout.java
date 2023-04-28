@@ -11,6 +11,7 @@ import java.util.Date;
 public class Workout {
     private static Workout workoutInstance = null;
     public ArrayList<Exercise> exercises;
+    public ArrayList<Exercise> tempExercises;
     public String workoutType;
     public Time workoutTime;
     public Date workoutDate;
@@ -18,6 +19,7 @@ public class Workout {
 
     public Workout() {
         exercises = new ArrayList<Exercise>();
+        tempExercises = new ArrayList<Exercise>();
     }
 
     public Workout(String workoutType, Date workoutDate, ArrayList<Exercise> exercises) {
@@ -32,13 +34,24 @@ public class Workout {
         }
         return workoutInstance;
     }
-    public void addExercise(Exercise exercise) {
-        exercises.add(exercise);
+    public void addTempExercise(Exercise exercise) {
+        tempExercises.add(exercise);
+    }
+    public void clearTempExercises() {
+        tempExercises.clear();
+        NewWorkoutRVAdapter newWorkoutRVAdapter = new NewWorkoutRVAdapter(context, exercises);
+        newWorkoutRVAdapter.notifyDataSetChanged();
+    }
+    public void addExercise(ArrayList<Exercise> tempExercises) {
+        for(int i=0; i<tempExercises.size();i++) {
+            exercises.add(tempExercises.get(i));
+        }
         NewWorkoutRVAdapter newWorkoutRVAdapter = new NewWorkoutRVAdapter(context, exercises);
         newWorkoutRVAdapter.notifyDataSetChanged();
     }
 
     public ArrayList<Exercise> getExercises() { return exercises; }
+    public ArrayList<Exercise> getTempExercises() { return tempExercises; }
 
     public String getWorkoutType() { return workoutType; }
     public ArrayList<String> getExerciseNamesForDropDownMenu(ArrayList<Exercise> exercises) {
