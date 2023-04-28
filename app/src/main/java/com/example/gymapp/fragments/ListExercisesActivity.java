@@ -12,6 +12,9 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.gymapp.R;
 import com.example.gymapp.Workout;
 import com.example.gymapp.rv_holders_and_adapters.oneExerciseAdapter;
+import com.jjoe64.graphview.GraphView;
+import com.jjoe64.graphview.series.DataPoint;
+import com.jjoe64.graphview.series.LineGraphSeries;
 
 public class ListExercisesActivity extends AppCompatActivity {
 
@@ -27,7 +30,8 @@ public class ListExercisesActivity extends AppCompatActivity {
         view = findViewById(R.id.rvExerciselist);
         view.setLayoutManager(new LinearLayoutManager(this));
         view.setAdapter(new oneExerciseAdapter(getApplicationContext(), workout.getExercises()));
-        };
+
+    };
     }
 
 

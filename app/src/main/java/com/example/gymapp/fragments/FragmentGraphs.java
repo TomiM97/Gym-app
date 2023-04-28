@@ -61,14 +61,6 @@ public class FragmentGraphs extends Fragment {
         Button chooseExercise = view.findViewById(R.id.btnshowExercise);
 
 
-            GraphView graphExercise = view.findViewById(R.id.progressgraph);
-            LineGraphSeries<DataPoint> series = new LineGraphSeries<>();
-            double y = 5;
-            for (int x=0; x<20; x++){;
-                series.appendData(new DataPoint(x,y), true,20);
-            }
-            graphExercise.addSeries(series);
-
 
         chooseExercise.setOnClickListener(new View.OnClickListener() {
             @Override

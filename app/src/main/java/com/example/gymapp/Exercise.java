@@ -32,4 +32,16 @@ public class Exercise {
     public int getSets() { return sets; }
     public ArrayList<Integer> getReps() { return reps; }
     public ArrayList<Float> getWorkoutWeights() { return workoutWeights; }
-}
+    public float getMaxWeight(){
+        float weightMax = 0;
+        for (int x=0;x<getWorkoutWeights().size();x++){
+            if (weightMax > getWorkoutWeights().get(x)){
+                weightMax = workoutWeights.get(0);
+            } else{
+                    weightMax = getWorkoutWeights().get(x);
+                }
+            }
+        return weightMax;
+        }
+    }
+
