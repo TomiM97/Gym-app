@@ -50,13 +50,14 @@ public class oneExerciseAdapter extends RecyclerView.Adapter<oneExerciseHolder> 
                 int pos = holder.getAdapterPosition();
                 exercise = Workout.getInstance().getExercises().get(pos).getExerciseName();
                 System.out.println(exercise + " " + pos);
-                double y;
+                double y = 1;
                 for (int x = 0; x < Workout.getInstance().getExercises().size(); ++x) {
                     if (Objects.equals(exercise, Workout.getInstance().getExercises().get(x).getExerciseName())) {
                         y = Workout.getInstance().exercises.get(x).getMaxWeight();
-                        series.appendData(new DataPoint(x, y), true, 90);
                     }
+                    series.appendData(new DataPoint(x, y), true, 90);
                 }
+                graphView.addSeries(series);
             }
         });
 
