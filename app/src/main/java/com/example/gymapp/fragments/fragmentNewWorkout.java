@@ -1,5 +1,6 @@
 package com.example.gymapp.fragments;
 
+import android.app.DatePickerDialog;
 import android.os.Bundle;
 
 import androidx.appcompat.app.AlertDialog;
@@ -14,7 +15,9 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.gymapp.Exercise;
@@ -23,9 +26,11 @@ import com.example.gymapp.User;
 import com.example.gymapp.Workout;
 import com.example.gymapp.rv_holders_and_adapters.NewWorkoutRVAdapter;
 
+import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 
 /**
@@ -36,10 +41,12 @@ public class fragmentNewWorkout extends Fragment {
 
     private Button btnSaveWorkout, addExercise;
     private int sets;
-    private EditText textWorkoutType, newWorkoutDate, repsInteger, weightsFloat, repsInteger2, weightsFloat2,
+    private EditText textWorkoutType, repsInteger, weightsFloat, repsInteger2, weightsFloat2,
             repsInteger3, weightsFloat3, repsInteger4, weightsFloat4, repsInteger5, weightsFloat5,
             repsInteger6, weightsFloat6;
     private AutoCompleteTextView newExercise;
+    private Calendar calendar;
+    private TextView newWorkoutDate;
 
 
     @Override
@@ -59,6 +66,32 @@ public class fragmentNewWorkout extends Fragment {
         textWorkoutType = view.findViewById(R.id.textWorkoutType);
         btnSaveWorkout = view.findViewById(R.id.btnSaveWorkout);
 
+        // automatic date fill
+        calendar = Calendar.getInstance();
+        String dateString = DateFormat.getDateInstance().format(calendar.getTime());
+        newWorkoutDate.setText(dateString);
+
+        newWorkoutDate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                DatePickerDialog datePickerDialog = new DatePickerDialog(getActivity(),
+                        new DatePickerDialog.OnDateSetListener() {
+                            @Override
+                            public void onDateSet(DatePicker datePicker, int year, int month, int day) {
+                                calendar.set(Calendar.YEAR, year);
+                                calendar.set(Calendar.MONTH, month);
+                                calendar.set(Calendar.DAY_OF_MONTH, day);
+                                String dateString = DateFormat.getDateInstance().format(calendar.getTime());
+                                newWorkoutDate.setText(dateString);
+                            }
+                        },
+                        calendar.get(Calendar.YEAR),
+                        calendar.get(Calendar.MONTH),
+                        calendar.get(Calendar.DAY_OF_MONTH));
+                datePickerDialog.show();
+            }
+        });
+
         // RecyclerView needs start:
         RecyclerView recyclerView = view.findViewById(R.id.rvNewWorkoutExercises);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
@@ -73,22 +106,20 @@ public class fragmentNewWorkout extends Fragment {
                     String workoutType = textWorkoutType.getText().toString();
                     String sWorkoutDate = newWorkoutDate.getText().toString();
                     Date workoutDate;
-                    if(!sWorkoutDate.isEmpty()) {
-                        try {
-                            workoutDate = new SimpleDateFormat("dd.MM.yyyy").parse(newWorkoutDate.getText().toString());
-                        } catch (ParseException e) {
-                            throw new RuntimeException(e);
-                        }
-                        Workout workout = new Workout(workoutType, workoutDate, Workout.getInstance().getExercises());
-                        User.getInstance().addWorkoutsToList(workout);
-                        // Empty the RV list
-                        ArrayList <Exercise> exercisesToBeDeleted = Workout.getInstance().tempExercises;
-                        Workout.getInstance().addExercise(exercisesToBeDeleted);
-                        Workout.getInstance().clearTempExercises();
-                        recyclerView.getAdapter().notifyDataSetChanged();
-                    } else {
-                        Toast.makeText(getContext(), "Laita päivämäärä", Toast.LENGTH_SHORT).show();
+                    try {
+                        workoutDate = new SimpleDateFormat("dd.MM.yyyy").parse(calendar.get(Calendar.DAY_OF_MONTH) +"."+
+                                        calendar.get(Calendar.MONTH) +"."+ calendar.get(Calendar.YEAR));
+                    } catch (ParseException e) {
+                        throw new RuntimeException(e);
                     }
+                    Workout workout = new Workout(workoutType, workoutDate, Workout.getInstance().getExercises());
+                    User.getInstance().addWorkoutsToList(workout);
+                    // Empty the RV list
+                    ArrayList <Exercise> exercisesToBeDeleted = Workout.getInstance().tempExercises;
+                    Workout.getInstance().addExercise(exercisesToBeDeleted);
+                    Workout.getInstance().clearTempExercises();
+                    recyclerView.getAdapter().notifyDataSetChanged();
+
                 }
             }
         });
@@ -187,17 +218,14 @@ public class fragmentNewWorkout extends Fragment {
                             float floatWeightsFloat6 = Float.parseFloat(weightsFloat6.getText().toString());
                             weightsList.add(floatWeightsFloat6);
                         }
-                        String sWorkoutDate = newWorkoutDate.getText().toString();
-                        if(!sWorkoutDate.isEmpty()) {
-                            try {
-                                Date workoutDate = new SimpleDateFormat("dd.MM.yyyy").parse(newWorkoutDate.getText().toString());
-                                Workout.getInstance().addTempExercise(new Exercise(weightsList, sets, repsList, txtNewExercise, workoutDate));
-                            } catch (ParseException e) {
-                                throw new RuntimeException(e);
-                            }
-                        } else {
-                            Toast.makeText(getContext(), "Laita päivämäärä", Toast.LENGTH_SHORT).show();
+                        try {
+                            Date workoutDate = new SimpleDateFormat("dd.MM.yyyy").parse(calendar.get(Calendar.DAY_OF_MONTH) +"."+
+                                    calendar.get(Calendar.MONTH) +"."+ calendar.get(Calendar.YEAR));
+                            Workout.getInstance().addTempExercise(new Exercise(weightsList, sets, repsList, txtNewExercise, workoutDate));
+                        } catch (ParseException e) {
+                            throw new RuntimeException(e);
                         }
+
                         newWorkoutRVAdapter.notifyDataSetChanged();
                         dialog.dismiss();
                     }

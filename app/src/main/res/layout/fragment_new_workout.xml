@@ -26,7 +26,7 @@
         <EditText
             android:id="@+id/textWorkoutType"
             android:layout_width="150dp"
-            android:layout_height="wrap_content"
+            android:layout_height="50dp"
             android:layout_marginStart="10dp"
             android:layout_marginTop="16dp"
             android:ems="10"
@@ -58,18 +58,20 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/btnAddExercise" />
 
-        <EditText
+        <TextView
             android:id="@+id/txtNewWorkoutDate"
             android:layout_width="160dp"
-            android:layout_height="wrap_content"
+            android:layout_height="50dp"
             android:layout_marginTop="16dp"
             android:layout_marginEnd="10dp"
             android:ems="10"
-            android:hint="Pvm (pp.mm.vvvv)"
-            android:inputType="date"
+            android:gravity="center"
+            android:text="@string/date_current"
+            android:textSize="20sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/textWorkoutType"
             app:layout_constraintTop_toTopOf="parent" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </FrameLayout>
