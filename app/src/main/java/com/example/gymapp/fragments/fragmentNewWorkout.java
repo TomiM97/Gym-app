@@ -90,114 +90,124 @@ public class fragmentNewWorkout extends Fragment {
             }
         });
         // Add exercise function
-        addExercise.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                View addExercisePopupView = getLayoutInflater().inflate(R.layout.popup_add_exercise, null);
+        String sWorkoutDate = newWorkoutDate.getText().toString();
+        if(!sWorkoutDate.isEmpty()) {
+            addExercise.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    View addExercisePopupView = getLayoutInflater().inflate(R.layout.popup_add_exercise, null);
 
-                newExercise = addExercisePopupView.findViewById(R.id.txtExerciseName);
-                // Dropdown menu
-                ArrayAdapter<String> adapter = new ArrayAdapter<String>(getContext(), android.R.layout.simple_dropdown_item_1line,
-                        Workout.getInstance().getExerciseNamesForDropDownMenu(Workout.getInstance().getExercises()));
-                newExercise.setAdapter(adapter);
-                repsInteger = addExercisePopupView.findViewById(R.id.txtRepInteger);
-                weightsFloat = addExercisePopupView.findViewById(R.id.txtWeightsFloat);
-                repsInteger2 = addExercisePopupView.findViewById(R.id.txtRepInteger2);
-                weightsFloat2 = addExercisePopupView.findViewById(R.id.txtWeightsFloat2);
-                repsInteger3 = addExercisePopupView.findViewById(R.id.txtRepInteger3);
-                weightsFloat3 = addExercisePopupView.findViewById(R.id.txtWeightsFloat3);
-                repsInteger4 = addExercisePopupView.findViewById(R.id.txtRepInteger4);
-                weightsFloat4 = addExercisePopupView.findViewById(R.id.txtWeightsFloat4);
-                repsInteger5 = addExercisePopupView.findViewById(R.id.txtRepInteger5);
-                weightsFloat5 = addExercisePopupView.findViewById(R.id.txtWeightsFloat5);
-                repsInteger6 = addExercisePopupView.findViewById(R.id.txtRepInteger6);
-                weightsFloat6 = addExercisePopupView.findViewById(R.id.txtWeightsFloat6);
+                    newExercise = addExercisePopupView.findViewById(R.id.txtExerciseName);
+                    // Dropdown menu
+                    ArrayAdapter<String> adapter = new ArrayAdapter<String>(getContext(), android.R.layout.simple_dropdown_item_1line,
+                            Workout.getInstance().getExerciseNamesForDropDownMenu(Workout.getInstance().getExercises()));
+                    newExercise.setAdapter(adapter);
+                    repsInteger = addExercisePopupView.findViewById(R.id.txtRepInteger);
+                    weightsFloat = addExercisePopupView.findViewById(R.id.txtWeightsFloat);
+                    repsInteger2 = addExercisePopupView.findViewById(R.id.txtRepInteger2);
+                    weightsFloat2 = addExercisePopupView.findViewById(R.id.txtWeightsFloat2);
+                    repsInteger3 = addExercisePopupView.findViewById(R.id.txtRepInteger3);
+                    weightsFloat3 = addExercisePopupView.findViewById(R.id.txtWeightsFloat3);
+                    repsInteger4 = addExercisePopupView.findViewById(R.id.txtRepInteger4);
+                    weightsFloat4 = addExercisePopupView.findViewById(R.id.txtWeightsFloat4);
+                    repsInteger5 = addExercisePopupView.findViewById(R.id.txtRepInteger5);
+                    weightsFloat5 = addExercisePopupView.findViewById(R.id.txtWeightsFloat5);
+                    repsInteger6 = addExercisePopupView.findViewById(R.id.txtRepInteger6);
+                    weightsFloat6 = addExercisePopupView.findViewById(R.id.txtWeightsFloat6);
 
-                AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(view.getContext());
-                Button popupAddExercise = addExercisePopupView.findViewById(R.id.btnAddExercisePopup);
-                Button popupCancel = addExercisePopupView.findViewById(R.id.btnCancelPopup);
-                dialogBuilder.setView(addExercisePopupView);
-                final AlertDialog dialog = dialogBuilder.create();
-                dialog.show();
+                    AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(view.getContext());
+                    Button popupAddExercise = addExercisePopupView.findViewById(R.id.btnAddExercisePopup);
+                    Button popupCancel = addExercisePopupView.findViewById(R.id.btnCancelPopup);
+                    dialogBuilder.setView(addExercisePopupView);
+                    final AlertDialog dialog = dialogBuilder.create();
+                    dialog.show();
 
-                popupAddExercise.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        ArrayList<Integer> repsList = new ArrayList<>();
-                        ArrayList<Float> weightsList = new ArrayList<>();
+                    popupAddExercise.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            ArrayList<Integer> repsList = new ArrayList<>();
+                            ArrayList<Float> weightsList = new ArrayList<>();
 
-                        String txtNewExercise = newExercise.getText().toString();
-                        sets = 0;
+                            String txtNewExercise = newExercise.getText().toString();
+                            sets = 0;
 
-                        if(!TextUtils.isEmpty(repsInteger.getText().toString())) {
-                            int intRepsInteger = Integer.parseInt(repsInteger.getText().toString());
-                            repsList.add(intRepsInteger);
-                            sets++;
+                            if (!TextUtils.isEmpty(repsInteger.getText().toString())) {
+                                int intRepsInteger = Integer.parseInt(repsInteger.getText().toString());
+                                repsList.add(intRepsInteger);
+                                sets++;
+                            }
+                            if (!TextUtils.isEmpty(weightsFloat.getText().toString())) {
+                                float floatWeightsFloat = Float.parseFloat(weightsFloat.getText().toString());
+                                weightsList.add(floatWeightsFloat);
+                            }
+                            if (!TextUtils.isEmpty(repsInteger2.getText().toString())) {
+                                int intRepsInteger2 = Integer.parseInt(repsInteger2.getText().toString());
+                                repsList.add(intRepsInteger2);
+                                sets++;
+                            }
+                            if (!TextUtils.isEmpty(weightsFloat2.getText().toString())) {
+                                float floatWeightsFloat2 = Float.parseFloat(weightsFloat2.getText().toString());
+                                weightsList.add(floatWeightsFloat2);
+                            }
+                            if (!TextUtils.isEmpty(repsInteger3.getText().toString())) {
+                                int intRepsInteger3 = Integer.parseInt(repsInteger3.getText().toString());
+                                repsList.add(intRepsInteger3);
+                                sets++;
+                            }
+                            if (!TextUtils.isEmpty(weightsFloat3.getText().toString())) {
+                                float floatWeightsFloat3 = Float.parseFloat(weightsFloat3.getText().toString());
+                                weightsList.add(floatWeightsFloat3);
+                            }
+                            if (!TextUtils.isEmpty(repsInteger4.getText().toString())) {
+                                int intRepsInteger4 = Integer.parseInt(repsInteger4.getText().toString());
+                                repsList.add(intRepsInteger4);
+                                sets++;
+                            }
+                            if (!TextUtils.isEmpty(weightsFloat4.getText().toString())) {
+                                float floatWeightsFloat4 = Float.parseFloat(weightsFloat4.getText().toString());
+                                weightsList.add(floatWeightsFloat4);
+                            }
+                            if (!TextUtils.isEmpty(repsInteger5.getText().toString())) {
+                                int intRepsInteger5 = Integer.parseInt(repsInteger5.getText().toString());
+                                repsList.add(intRepsInteger5);
+                                sets++;
+                            }
+                            if (!TextUtils.isEmpty(weightsFloat5.getText().toString())) {
+                                float floatWeightsFloat5 = Float.parseFloat(weightsFloat5.getText().toString());
+                                weightsList.add(floatWeightsFloat5);
+                            }
+                            if (!TextUtils.isEmpty(repsInteger6.getText().toString())) {
+                                int intRepsInteger6 = Integer.parseInt(repsInteger6.getText().toString());
+                                repsList.add(intRepsInteger6);
+                                sets++;
+                            }
+                            if (!TextUtils.isEmpty(weightsFloat6.getText().toString())) {
+                                float floatWeightsFloat6 = Float.parseFloat(weightsFloat6.getText().toString());
+                                weightsList.add(floatWeightsFloat6);
+                            }
+                            try {
+                                Date workoutDate = new SimpleDateFormat("dd.MM.yyyy").parse(newWorkoutDate.getText().toString());
+                                Workout.getInstance().addExercise(new Exercise(weightsList, sets, repsList, txtNewExercise, workoutDate));
+                            } catch (ParseException e) {
+                                throw new RuntimeException(e);
+                            }
+                            newWorkoutRVAdapter.notifyDataSetChanged();
+                            dialog.dismiss();
                         }
-                        if(!TextUtils.isEmpty(weightsFloat.getText().toString())) {
-                            float floatWeightsFloat = Float.parseFloat(weightsFloat.getText().toString());
-                            weightsList.add(floatWeightsFloat);
-                        }
-                        if(!TextUtils.isEmpty(repsInteger2.getText().toString())) {
-                            int intRepsInteger2 = Integer.parseInt(repsInteger2.getText().toString());
-                            repsList.add(intRepsInteger2);
-                            sets++;
-                        }
-                        if(!TextUtils.isEmpty(weightsFloat2.getText().toString())) {
-                            float floatWeightsFloat2 = Float.parseFloat(weightsFloat2.getText().toString());
-                            weightsList.add(floatWeightsFloat2);
-                        }
-                        if(!TextUtils.isEmpty(repsInteger3.getText().toString())) {
-                            int intRepsInteger3 = Integer.parseInt(repsInteger3.getText().toString());
-                            repsList.add(intRepsInteger3);
-                            sets++;
-                        }
-                        if(!TextUtils.isEmpty(weightsFloat3.getText().toString())) {
-                            float floatWeightsFloat3 = Float.parseFloat(weightsFloat3.getText().toString());
-                            weightsList.add(floatWeightsFloat3);
-                        }
-                        if(!TextUtils.isEmpty(repsInteger4.getText().toString())) {
-                            int intRepsInteger4 = Integer.parseInt(repsInteger4.getText().toString());
-                            repsList.add(intRepsInteger4);
-                            sets++;
-                        }
-                        if(!TextUtils.isEmpty(weightsFloat4.getText().toString())) {
-                            float floatWeightsFloat4 = Float.parseFloat(weightsFloat4.getText().toString());
-                            weightsList.add(floatWeightsFloat4);
-                        }
-                        if(!TextUtils.isEmpty(repsInteger5.getText().toString())) {
-                            int intRepsInteger5 = Integer.parseInt(repsInteger5.getText().toString());
-                            repsList.add(intRepsInteger5);
-                            sets++;
-                        }
-                        if(!TextUtils.isEmpty(weightsFloat5.getText().toString())) {
-                            float floatWeightsFloat5 = Float.parseFloat(weightsFloat5.getText().toString());
-                            weightsList.add(floatWeightsFloat5);
-                        }
-                        if(!TextUtils.isEmpty(repsInteger6.getText().toString())) {
-                            int intRepsInteger6 = Integer.parseInt(repsInteger6.getText().toString());
-                            repsList.add(intRepsInteger6);
-                            sets++;
-                        }
-                        if(!TextUtils.isEmpty(weightsFloat6.getText().toString())) {
-                            float floatWeightsFloat6 = Float.parseFloat(weightsFloat6.getText().toString());
-                            weightsList.add(floatWeightsFloat6);
-                        }
-                        Workout.getInstance().addExercise(new Exercise(weightsList, sets, repsList, txtNewExercise));
-                        newWorkoutRVAdapter.notifyDataSetChanged();
-                        dialog.dismiss();
-                    }
-                });
+                    });
 
-                popupCancel.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        dialog.dismiss();
+                    popupCancel.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            dialog.dismiss();
 
-                    }
-                });
-            }
-        });
+                        }
+                    });
+                }
+            });
+        } else {
+            Toast.makeText(getContext(), "Laita päivämäärä", Toast.LENGTH_SHORT).show();
+        }
         return view;
     }
 }
