@@ -90,7 +90,7 @@ public class ListExercisesActivity extends AppCompatActivity implements MyListen
     private void createScatterplot() {
         Log.d(TAG, "Tehdään kuva!");
         //järjestetään lista...
-        xYplotValuearray = sortArray(xYplotValuearray);
+        //sortArray(xYplotValuearray);
         for(int i = 0; i < xYplotValuearray.size(); i++) {
             try {
                 double x = xYplotValuearray.get(i).getX();
