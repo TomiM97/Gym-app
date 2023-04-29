@@ -130,6 +130,29 @@ public class FragmentWeight extends Fragment {
 
                 editWeight.setText("");
                 editDate.setText(dateString);
+
+                weightGraph.removeSeries(weightGraph.getSeries().get(0));
+                // constructing graphView
+                LineGraphSeries<DataPoint> series = new LineGraphSeries<DataPoint>();
+                // constructing weights ArrayList
+                ArrayList<Float> weights = new ArrayList<>();
+                for(Weight loopWeight : User.getInstance().getWeightList()) {
+                    weights.add(loopWeight.weightFloat);
+                }
+                // constructing dates ArrayList
+                ArrayList<Date> dates = new ArrayList<>();
+                for(Weight loopWeight : User.getInstance().getWeightList()) {
+                    dates.add(loopWeight.date);
+                }
+                Collections.sort(dates);
+                Float weight1;
+                Date date2;
+                for(int i = 0; i<weights.size(); i++) {
+                    weight1 = weights.get(i);
+                    date2 = dates.get(i);
+                    series.appendData(new DataPoint(date2, weight1), true, 90);
+                }
+                weightGraph.addSeries(series);
             }
         });
 
