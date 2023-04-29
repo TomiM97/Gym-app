@@ -16,21 +16,19 @@ public class oneExerciseHolder extends RecyclerView.ViewHolder {
 
     public TextView exerciseName;
     public Button rvChoose;
-    private int listener;
 
     public oneExerciseHolder(@NonNull View itemView) {
         super(itemView);
         exerciseName = itemView.findViewById(R.id.exerciseName);
         rvChoose = itemView.findViewById(R.id.rvChoose);
-        GraphView graphView = itemView.findViewById(R.id.progressgraph);
+        rvChoose.setTag(getAdapterPosition());
+        rvChoose.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                int position = (int) view.getTag();
+            }
+        });
     }
-
-    public void DataPoints(int x, float y){
-        ListExercisesActivity.getDatapointX(x);
-        ListExercisesActivity.getDatapointY(y);
-    }
-    public int setListener(int listener){
-        return ListExercisesActivity.Listener(listener);}
 
 
 }

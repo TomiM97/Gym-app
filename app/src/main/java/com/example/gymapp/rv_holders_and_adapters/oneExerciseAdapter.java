@@ -10,17 +10,14 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.gymapp.Exercise;
 import com.example.gymapp.R;
-import com.example.gymapp.Workout;
-import com.jjoe64.graphview.GraphView;
-import com.jjoe64.graphview.series.DataPoint;
-import com.jjoe64.graphview.series.LineGraphSeries;
-import com.jjoe64.graphview.series.PointsGraphSeries;
 
 import java.util.ArrayList;
 
-public class oneExerciseAdapter extends RecyclerView.Adapter<oneExerciseHolder> {
+public class oneExerciseAdapter extends RecyclerView.Adapter<oneExerciseHolder> implements MyListener {
 
-    private Context context;
+
+    private MyListener myListener;
+    private final Context context;
     private ArrayList<Exercise> exercises = new ArrayList<>();
     private String exercise;
 
@@ -28,7 +25,9 @@ public class oneExerciseAdapter extends RecyclerView.Adapter<oneExerciseHolder> 
         this.context = context;
         this.exercises = exercises;
     }
-
+    public void setMyListener(MyListener myListener) {
+        this.myListener = myListener;
+    }
 
 
     @NonNull
@@ -37,7 +36,6 @@ public class oneExerciseAdapter extends RecyclerView.Adapter<oneExerciseHolder> 
         return new oneExerciseHolder(LayoutInflater.from(context).inflate(R.layout.rv_one_exercise, parent, false));
     }
 
-    @Override
     public void onBindViewHolder(@NonNull oneExerciseHolder holder, int position) {
         holder.exerciseName.setText(exercises.get(position).exerciseName);
         holder.rvChoose.setOnClickListener(new View.OnClickListener() {
@@ -45,9 +43,7 @@ public class oneExerciseAdapter extends RecyclerView.Adapter<oneExerciseHolder> 
             public void onClick(View view) {
                 int position = holder.getAdapterPosition();
                 System.out.println(position);
-                float y = Workout.getInstance().exercises.get(position).getMaxWeight();
-                holder.DataPoints(position,y);
-                holder.setListener(position);
+                myListener.onButtonClick(position);
             }
         });
     }
@@ -56,4 +52,12 @@ public class oneExerciseAdapter extends RecyclerView.Adapter<oneExerciseHolder> 
         return exercises.size();
     }
 
+    @Override
+    public int onButtonClick(int position) {
+    return position;}
+
+    @Override
+    public void setMyListener() {
+
+    }
 }
