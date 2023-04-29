@@ -7,7 +7,9 @@
     android:layout_marginEnd="5dp"
     android:layout_marginBottom="2dp"
     android:background="#B9EC7F"
-    android:orientation="horizontal">
+    android:orientation="horizontal"
+    android:longClickable="true"
+    android:id="@+id/exerciseRV">
 
     <LinearLayout
         android:layout_width="match_parent"

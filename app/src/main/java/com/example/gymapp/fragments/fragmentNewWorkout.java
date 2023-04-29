@@ -233,13 +233,16 @@ public class fragmentNewWorkout extends Fragment {
                                             calendar.get(Calendar.YEAR)
                                     )
                             );
-                            Workout.getInstance().addTempExercise(new Exercise(weightsList, sets, repsList, txtNewExercise, workoutDate));
+                            if(weightsList.size()==repsList.size()) {
+                                Workout.getInstance().addTempExercise(new Exercise(weightsList, sets, repsList, txtNewExercise, workoutDate));
+                                newWorkoutRVAdapter.notifyDataSetChanged();
+                                dialog.dismiss();
+                            } else {
+                                Toast.makeText(getContext(), "Laita joka sarjalle paino", Toast.LENGTH_SHORT).show();
+                            }
                         } catch (ParseException e) {
                             throw new RuntimeException(e);
                         }
-
-                        newWorkoutRVAdapter.notifyDataSetChanged();
-                        dialog.dismiss();
                     }
                 });
 
