@@ -32,6 +32,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Collections;
 import java.util.Date;
+import java.util.Locale;
 
 public class FragmentWeight extends Fragment {
     private Context context;
@@ -71,7 +72,7 @@ public class FragmentWeight extends Fragment {
                             @Override
                             public void onDateSet(DatePicker datePicker, int year, int month, int day) {
                                 calendar.set(Calendar.YEAR, year);
-                                calendar.set(Calendar.MONTH, month);
+                                calendar.set(Calendar.MONTH, month - 1);
                                 calendar.set(Calendar.DAY_OF_MONTH, day);
                                 String dateString = DateFormat.getDateInstance().format(calendar.getTime());
                                 editDate.setText(dateString);
@@ -90,8 +91,13 @@ public class FragmentWeight extends Fragment {
                 Float inputWeight = Float.parseFloat(editWeight.getText().toString());
                 Date date1;
                 try {
-                    date1=new SimpleDateFormat("dd.MM.yyyy").parse(calendar.get(Calendar.DAY_OF_MONTH) +"."+
-                            calendar.get(Calendar.MONTH) +"."+ calendar.get(Calendar.YEAR));
+                    date1=new SimpleDateFormat("dd.MM.yyyy").parse(
+                            String.format(Locale.getDefault(), "%02d.%02d.%04d",
+                                    calendar.get(Calendar.DAY_OF_MONTH),
+                                    calendar.get(Calendar.MONTH) + 1,
+                                    calendar.get(Calendar.YEAR)
+                            )
+                    );
                 } catch (ParseException e) {
                     throw new RuntimeException(e);
                 }
