@@ -68,9 +68,6 @@ public class FragmentFrontPage extends Fragment {
                 } catch (ParseException e) {
                     throw new RuntimeException(e);
                 }
-
-
-
             }
         });
 

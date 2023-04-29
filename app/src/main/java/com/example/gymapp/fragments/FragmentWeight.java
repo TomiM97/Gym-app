@@ -22,6 +22,7 @@ import com.example.gymapp.R;
 import com.example.gymapp.User;
 import com.example.gymapp.Weight;
 import com.jjoe64.graphview.GraphView;
+import com.jjoe64.graphview.GridLabelRenderer;
 import com.jjoe64.graphview.helper.DateAsXAxisLabelFormatter;
 import com.jjoe64.graphview.series.DataPoint;
 import com.jjoe64.graphview.series.LineGraphSeries;
@@ -87,6 +88,7 @@ public class FragmentWeight extends Fragment {
         }
         weightGraph.addSeries(series);
         weightGraph.getGridLabelRenderer().setLabelFormatter(new DateAsXAxisLabelFormatter(getContext()));
+        weightGraph.getGridLabelRenderer().setGridStyle( GridLabelRenderer.GridStyle.NONE );
 
         editDate.setOnClickListener(new View.OnClickListener() {
             @Override
