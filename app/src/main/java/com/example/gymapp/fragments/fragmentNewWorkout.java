@@ -261,8 +261,9 @@ public class fragmentNewWorkout extends Fragment implements OnItemLongClickListe
     // remove or edit option
 
     @Override
-    public void onItemLongClick(int position) {
+    public int onItemLongClick(int position) {
         System.out.println("jee jotain toimii");
+        return position;
     }
 
     @Override

@@ -14,8 +14,11 @@
         android:layout_height="match_parent"
         android:layout_marginStart="5dp"
         android:layout_marginTop="5dp"
+        android:layout_marginEnd="5dp"
         android:layout_marginBottom="2dp"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:id="@+id/rvExercise"
+        android:background="#E0EAD4">
 
         <TextView
             android:id="@+id/txtRVWorkoutType"

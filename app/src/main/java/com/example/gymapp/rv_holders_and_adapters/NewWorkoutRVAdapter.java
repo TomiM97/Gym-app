@@ -29,7 +29,8 @@ public class NewWorkoutRVAdapter extends RecyclerView.Adapter<NewWorkoutRVHolder
     }
 
     @Override
-    public void onItemLongClick(int position) {
+    public int onItemLongClick(int position) {
+        return position;
     }
     @Override
     public void setOnItemLongClickListener() {};
