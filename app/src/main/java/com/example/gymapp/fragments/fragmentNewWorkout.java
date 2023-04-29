@@ -80,7 +80,7 @@ public class fragmentNewWorkout extends Fragment {
                             @Override
                             public void onDateSet(DatePicker datePicker, int year, int month, int day) {
                                 calendar.set(Calendar.YEAR, year);
-                                calendar.set(Calendar.MONTH, month - 1);
+                                calendar.set(Calendar.MONTH, month);
                                 calendar.set(Calendar.DAY_OF_MONTH, day);
                                 String dateString = DateFormat.getDateInstance().format(calendar.getTime());
                                 newWorkoutDate.setText(dateString);
@@ -99,13 +99,13 @@ public class fragmentNewWorkout extends Fragment {
         NewWorkoutRVAdapter newWorkoutRVAdapter = new NewWorkoutRVAdapter(getContext(), Workout.getInstance().getTempExercises());
         recyclerView.setAdapter(newWorkoutRVAdapter);
         // RecyclerView needs stop.
+
         // Save workout function
         btnSaveWorkout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 if (textWorkoutType != null) {
                     String workoutType = textWorkoutType.getText().toString();
-                    String sWorkoutDate = newWorkoutDate.getText().toString();
                     Date workoutDate;
                     try {
                         workoutDate = new SimpleDateFormat("dd.MM.yyyy").parse(
@@ -255,6 +255,7 @@ public class fragmentNewWorkout extends Fragment {
                 });
             }
         });
+        // edit or remove option
 
         return view;
     }

@@ -96,7 +96,7 @@ public class FragmentWeight extends Fragment {
                             @Override
                             public void onDateSet(DatePicker datePicker, int year, int month, int day) {
                                 calendar.set(Calendar.YEAR, year);
-                                calendar.set(Calendar.MONTH, month - 1);
+                                calendar.set(Calendar.MONTH, month);
                                 calendar.set(Calendar.DAY_OF_MONTH, day);
                                 String dateString = DateFormat.getDateInstance().format(calendar.getTime());
                                 editDate.setText(dateString);
