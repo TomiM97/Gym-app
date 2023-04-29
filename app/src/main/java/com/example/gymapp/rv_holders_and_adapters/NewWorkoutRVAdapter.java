@@ -2,13 +2,19 @@ package com.example.gymapp.rv_holders_and_adapters;
 
 import android.content.Context;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.gymapp.Exercise;
 import com.example.gymapp.R;
+import com.example.gymapp.Workout;
 
 import java.util.ArrayList;
 
@@ -24,7 +30,8 @@ public class NewWorkoutRVAdapter extends RecyclerView.Adapter<NewWorkoutRVHolder
     @NonNull
     @Override
     public NewWorkoutRVHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        return new NewWorkoutRVHolder(LayoutInflater.from(context).inflate(R.layout.rv_new_workout, parent, false));
+            View itemView = LayoutInflater.from(context).inflate(R.layout.rv_new_workout, parent, false);
+        return new NewWorkoutRVHolder(itemView);
     }
 
     @Override
@@ -48,8 +55,6 @@ public class NewWorkoutRVAdapter extends RecyclerView.Adapter<NewWorkoutRVHolder
             dynamicTxtRVWeight = dynamicTxtRVWeight.concat(exercises.get(position).getWorkoutWeights().get(i) + "kg\n");
         }
         holder.dynamicTxtRVWeight.setText(dynamicTxtRVWeight);
-
-
     }
 
     @Override
