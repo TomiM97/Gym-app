@@ -125,6 +125,7 @@ public class fragmentNewWorkout extends Fragment {
                     Workout.getInstance().addExercise(exercisesToBeDeleted);
                     Workout.getInstance().clearTempExercises();
                     recyclerView.getAdapter().notifyDataSetChanged();
+                    textWorkoutType.setText("");
 
                 }
             }
