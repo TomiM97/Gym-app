@@ -37,7 +37,6 @@ import java.util.Date;
 import java.util.Locale;
 
 public class FragmentWeight extends Fragment {
-    private Context context;
     private Calendar calendar;
 
     @Override
@@ -87,7 +86,7 @@ public class FragmentWeight extends Fragment {
             series.appendData(new DataPoint(date2, weight1), true, 90);
         }
         weightGraph.addSeries(series);
-        weightGraph.getGridLabelRenderer().setLabelFormatter(new DateAsXAxisLabelFormatter(context));
+        weightGraph.getGridLabelRenderer().setLabelFormatter(new DateAsXAxisLabelFormatter(getContext()));
 
         editDate.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -131,13 +130,6 @@ public class FragmentWeight extends Fragment {
 
                 editWeight.setText("");
                 editDate.setText(dateString);
-
-                ArrayList<Series> seriesArrayList = (ArrayList<Series>) weightGraph.getSeries();
-                LineGraphSeries<DataPoint> series1 = (LineGraphSeries<DataPoint>) seriesArrayList.get(0);
-                weightGraph.removeSeries(series1);
-
-                series1.appendData(new DataPoint(date1, inputWeight), true, 90);
-                weightGraph.addSeries(series1);
             }
         });
 
