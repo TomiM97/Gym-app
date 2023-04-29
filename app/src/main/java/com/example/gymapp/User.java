@@ -9,6 +9,7 @@ public class User {
     public ArrayList<Workout> workouts = new ArrayList<>();
     public float bmi;
     public Weight weight;
+    public ArrayList<Weight> weightList = new ArrayList<>();
     public float height;
     public int age;
     public Date birthDay;
@@ -21,7 +22,7 @@ public class User {
             dateNow = new Date();
         }
         this.weight = new Weight(weight, dateNow);
-        Weight.getInstance().addWeight(this.weight);
+        addWeight(this.weight);
         this.height = height;
         this.birthDay = birthDay;
         this.bmi = weight/(height*height);
@@ -76,5 +77,13 @@ public class User {
 
     public float getBmi() {
         return bmi;
+    }
+
+    public void addWeight(Weight weight) {
+        weightList.add(weight);
+    }
+
+    public ArrayList<Weight> getWeightList() {
+        return this.weightList;
     }
 }

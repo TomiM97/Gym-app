@@ -19,11 +19,13 @@ import android.widget.TextView;
 
 import com.example.gymapp.MainActivity;
 import com.example.gymapp.R;
+import com.example.gymapp.User;
 import com.example.gymapp.Weight;
 import com.jjoe64.graphview.GraphView;
 import com.jjoe64.graphview.helper.DateAsXAxisLabelFormatter;
 import com.jjoe64.graphview.series.DataPoint;
 import com.jjoe64.graphview.series.LineGraphSeries;
+import com.jjoe64.graphview.series.Series;
 
 import java.text.DateFormat;
 import java.text.ParseException;
@@ -64,6 +66,29 @@ public class FragmentWeight extends Fragment {
         String dateString = DateFormat.getDateInstance().format(calendar.getTime());
         editDate.setText(dateString);
 
+        // constructing graphView
+        LineGraphSeries<DataPoint> series = new LineGraphSeries<DataPoint>();
+        // constructing weights ArrayList
+        ArrayList<Float> weights = new ArrayList<>();
+        for(Weight loopWeight : User.getInstance().getWeightList()) {
+            weights.add(loopWeight.weightFloat);
+        }
+        // constructing dates ArrayList
+        ArrayList<Date> dates = new ArrayList<>();
+        for(Weight loopWeight : User.getInstance().getWeightList()) {
+            dates.add(loopWeight.date);
+        }
+        Collections.sort(dates);
+        Float weight1;
+        Date date2;
+        for(int i = 0; i<weights.size(); i++) {
+            weight1 = weights.get(i);
+            date2 = dates.get(i);
+            series.appendData(new DataPoint(date2, weight1), true, 90);
+        }
+        weightGraph.addSeries(series);
+        weightGraph.getGridLabelRenderer().setLabelFormatter(new DateAsXAxisLabelFormatter(context));
+
         editDate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -102,26 +127,17 @@ public class FragmentWeight extends Fragment {
                     throw new RuntimeException(e);
                 }
                 Weight weight = new Weight(inputWeight, date1);
-                Weight.getInstance().addWeight(weight);
+                User.getInstance().addWeight(weight);
 
                 editWeight.setText("");
                 editDate.setText(dateString);
 
-                LineGraphSeries<DataPoint> series = new LineGraphSeries<DataPoint>();
-                Float weight1;
-                Date date2;
-                ArrayList<Float> weightFloats = Weight.getInstance().getWeightFloats();
-                ArrayList<Date> dates = Weight.getInstance().getDates();
-                Collections.sort(dates);
-                for(int i = 0; i<weightFloats.size(); i++) {
-                    weight1 = weightFloats.get(i);
-                    date2 = dates.get(i);
-                    series.appendData(new DataPoint(date2, weight1), true, 90);
-                }
-                weightGraph.addSeries(series);
-                weightGraph.getGridLabelRenderer().setLabelFormatter(new DateAsXAxisLabelFormatter(context));
+                ArrayList<Series> seriesArrayList = (ArrayList<Series>) weightGraph.getSeries();
+                LineGraphSeries<DataPoint> series1 = (LineGraphSeries<DataPoint>) seriesArrayList.get(0);
+                weightGraph.removeSeries(series1);
 
-
+                series1.appendData(new DataPoint(date1, inputWeight), true, 90);
+                weightGraph.addSeries(series1);
             }
         });
 
