@@ -4,28 +4,35 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
-import android.widget.Button;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AlertDialog;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.gymapp.Exercise;
 import com.example.gymapp.R;
-import com.example.gymapp.Workout;
 
 import java.util.ArrayList;
 
-public class NewWorkoutRVAdapter extends RecyclerView.Adapter<NewWorkoutRVHolder> {
-    private Context context;
+public class NewWorkoutRVAdapter extends RecyclerView.Adapter<NewWorkoutRVHolder> implements OnItemLongClickListener {
+    private OnItemLongClickListener onItemLongClickListener;
+    private final Context context;
     private ArrayList<Exercise> exercises = new ArrayList<>();
 
     public NewWorkoutRVAdapter(Context context, ArrayList<Exercise> exercises) {
         this.context = context;
         this.exercises = exercises;
     }
+    public OnItemLongClickListener getOnItemLongClickListener() { return onItemLongClickListener; }
+
+    public void setOnItemLongClickListener(OnItemLongClickListener onItemLongClickListener) {
+        this.onItemLongClickListener = onItemLongClickListener;
+    }
+
+    @Override
+    public void onItemLongClick(int position) {
+    }
+    @Override
+    public void setOnItemLongClickListener() {};
 
     @NonNull
     @Override
@@ -55,10 +62,23 @@ public class NewWorkoutRVAdapter extends RecyclerView.Adapter<NewWorkoutRVHolder
             dynamicTxtRVWeight = dynamicTxtRVWeight.concat(exercises.get(position).getWorkoutWeights().get(i) + "kg\n");
         }
         holder.dynamicTxtRVWeight.setText(dynamicTxtRVWeight);
+
+        // edit or remove option
+        holder.itemView.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View view) {
+                if (onItemLongClickListener != null) {
+                    onItemLongClickListener.onItemLongClick(position);
+                    return true;
+                }
+                return false;
+            }
+        });
     }
 
     @Override
     public int getItemCount() {
         return exercises.size();
     }
+
 }

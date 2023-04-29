@@ -25,6 +25,7 @@ import com.example.gymapp.R;
 import com.example.gymapp.User;
 import com.example.gymapp.Workout;
 import com.example.gymapp.rv_holders_and_adapters.NewWorkoutRVAdapter;
+import com.example.gymapp.rv_holders_and_adapters.OnItemLongClickListener;
 
 import java.text.DateFormat;
 import java.text.ParseException;
@@ -38,8 +39,7 @@ import java.util.Locale;
  * A simple {@link Fragment} subclass.
  * create an instance of this fragment.
  */
-public class fragmentNewWorkout extends Fragment {
-
+public class fragmentNewWorkout extends Fragment implements OnItemLongClickListener {
     private Button btnSaveWorkout, addExercise;
     private int sets;
     private EditText textWorkoutType, repsInteger, weightsFloat, repsInteger2, weightsFloat2,
@@ -132,6 +132,7 @@ public class fragmentNewWorkout extends Fragment {
         });
         // Add exercise function
 
+        NewWorkoutRVAdapter finalNewWorkoutRVAdapter = newWorkoutRVAdapter;
         addExercise.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -235,7 +236,7 @@ public class fragmentNewWorkout extends Fragment {
                             );
                             if(weightsList.size()==repsList.size()) {
                                 Workout.getInstance().addTempExercise(new Exercise(weightsList, sets, repsList, txtNewExercise, workoutDate));
-                                newWorkoutRVAdapter.notifyDataSetChanged();
+                                finalNewWorkoutRVAdapter.notifyDataSetChanged();
                                 dialog.dismiss();
                             } else {
                                 Toast.makeText(getContext(), "Laita joka sarjalle paino", Toast.LENGTH_SHORT).show();
@@ -255,8 +256,19 @@ public class fragmentNewWorkout extends Fragment {
                 });
             }
         });
-        // edit or remove option
-
         return view;
     }
+    // remove or edit option
+
+    @Override
+    public void onItemLongClick(int position) {
+        System.out.println("jee jotain toimii");
+    }
+
+    @Override
+    public void setOnItemLongClickListener() {
+
+    }
+
+
 }
