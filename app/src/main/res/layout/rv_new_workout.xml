@@ -62,19 +62,18 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
+
         <Button
             android:id="@+id/btnDelete"
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:text="X"
-            android:textColor="#FF0000"
-            android:textColorLink="#E14949"
             android:textSize="25dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:rippleColor="#FEDC00" />
+            app:layout_constraintTop_toTopOf="parent"/>
     </androidx.constraintlayout.widget.ConstraintLayout>
+
 
 
 </androidx.appcompat.widget.LinearLayoutCompat>
