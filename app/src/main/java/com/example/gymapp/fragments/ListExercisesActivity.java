@@ -18,6 +18,8 @@ import com.jjoe64.graphview.series.DataPoint;
 import com.jjoe64.graphview.series.PointsGraphSeries;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 
 public class ListExercisesActivity extends AppCompatActivity implements MyListener{
 
@@ -26,7 +28,7 @@ public class ListExercisesActivity extends AppCompatActivity implements MyListen
     PointsGraphSeries<DataPoint> xySeries;
     private Button btnRvchoose;
     GraphView ScatterPlot;
-    private ArrayList<XYplotValues> xYplotValuearray;
+    private ArrayList<XYplotValues> xYplotValuearray = new ArrayList<>();
     private RecyclerView view;
 
     int pos;
@@ -73,16 +75,19 @@ public class ListExercisesActivity extends AppCompatActivity implements MyListen
         view.setAdapter(adapter);
     }
 
-
     private void init(int pos){
+        Collections.sort(Workout.getInstance().exercises.get(pos).workoutWeights, Float::compare);
+        ScatterPlot.removeAllSeries();
         xySeries = new PointsGraphSeries<>();
-        Log.d(TAG, "tullaanko tänne nro4");
 
-        for (int i=0; i < Workout.getInstance().exercises.get(pos).sets; i++) {
-            double x = i;
-            double y = Workout.getInstance().getExercises().get(pos).workoutWeights.get(i);
-                    Log.d(TAG, "onClick: lisätään pisteet (x,y) " + pos + ", " + y + ")");
-                    xYplotValuearray.add(new XYplotValues(x, y));
+        for (int i=0; i < Workout.getInstance().exercises.size(); i++) {
+                if (Workout.getInstance().exercises.get(pos).exerciseName.equals(Workout.getInstance().exercises.get(i).getExerciseName())){
+                    for(int d=0; d<Workout.getInstance().exercises.get(i).sets; d++){
+                        double y = Workout.getInstance().getExercises().get(i).workoutWeights.get(d);
+                        Log.d(TAG, "onClick: lisätään pisteet (x,y) " + pos + ", " + y + ")");
+                        xYplotValuearray.add(new XYplotValues(d, y));
+                    }
+                }
         }
             if (xYplotValuearray.size() != 0) {
                 createScatterplot();
@@ -106,8 +111,15 @@ public class ListExercisesActivity extends AppCompatActivity implements MyListen
         }
         xySeries.setShape(PointsGraphSeries.Shape.TRIANGLE);
         xySeries.setColor(Color.BLACK);
+        ScatterPlot.getViewport().setScalable(true);
+        ScatterPlot.getViewport().setScalableY(true);
+        ScatterPlot.getViewport().setXAxisBoundsManual(true);
+        ScatterPlot.getViewport().setMaxX(20);
+        ScatterPlot.getViewport().setMinX(0);
 
-
+        ScatterPlot.getViewport().setYAxisBoundsManual(true);
+        ScatterPlot.getViewport().setMaxY(300);
+        ScatterPlot.getViewport().setMinY(0);
         ScatterPlot.addSeries(xySeries);
 
     }

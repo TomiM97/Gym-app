@@ -1,6 +1,7 @@
 package com.example.gymapp;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Date;
 
 public class Exercise {
@@ -44,6 +45,7 @@ public class Exercise {
     public ArrayList<Float> getWorkoutWeights() {
         return workoutWeights;
     }
+
 
     public Date getDate() {
         return date;

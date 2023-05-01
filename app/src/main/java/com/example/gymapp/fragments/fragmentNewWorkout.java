@@ -103,6 +103,7 @@ public class fragmentNewWorkout extends Fragment {
         btnSaveWorkout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
                 if (textWorkoutType != null) {
                     String workoutType = textWorkoutType.getText().toString();
                     Date workoutDate;
@@ -119,6 +120,7 @@ public class fragmentNewWorkout extends Fragment {
                     }
                     Workout workout = new Workout(workoutType, workoutDate, Workout.getInstance().getExercises());
                     User.getInstance().addWorkoutsToList(workout);
+
                     // Empty the RV list
                     ArrayList <Exercise> exercisesToBeDeleted = Workout.getInstance().tempExercises;
                     Workout.getInstance().addExercise(exercisesToBeDeleted);
