@@ -19,7 +19,8 @@ public class Exercise {
         this.date = date;
     }
 
-    public Exercise() {}
+    public Exercise() {
+    }
 
     public static Exercise getInstance() {
         if (exerciseListInstance == null) {
@@ -28,23 +29,26 @@ public class Exercise {
         return exerciseListInstance;
     }
 
-    public String getExerciseName() { return exerciseName; }
-    public int getSets() { return sets; }
-    public ArrayList<Integer> getReps() { return reps; }
-    public ArrayList<Float> getWorkoutWeights() { return workoutWeights; }
-    public Date getDate() { return date; }
-
-    public float getMaxWeight(){
-        float weightMax = 0;
-        for (int x=0;x<getWorkoutWeights().size();x++){
-            if (weightMax < getWorkoutWeights().get(x)){
-                weightMax = getWorkoutWeights().get(x);
-            }
-            System.out.println(x);
-            System.out.println(weightMax);
-            }
-
-        return weightMax;
-        }
+    public String getExerciseName() {
+        return exerciseName;
     }
+
+    public int getSets() {
+        return sets;
+    }
+
+    public ArrayList<Integer> getReps() {
+        return reps;
+    }
+
+    public ArrayList<Float> getWorkoutWeights() {
+        return workoutWeights;
+    }
+
+    public Date getDate() {
+        return date;
+    }
+}
+
+
 
