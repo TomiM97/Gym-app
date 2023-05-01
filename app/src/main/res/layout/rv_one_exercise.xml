@@ -5,7 +5,7 @@
     android:id="@+id/rvOneExercise"
     android:layout_width="match_parent"
     android:layout_height="70dp"
-    android:background="#03A9F4">
+    android:background="#323232">
 
     <TextView
         android:id="@+id/exerciseName"
@@ -13,6 +13,7 @@
         android:layout_height="45dp"
         android:layout_marginTop="16dp"
         android:text="LiikkeenNimi"
+        android:textColor="#88CF15"
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.073"
@@ -23,7 +24,10 @@
         android:id="@+id/rvChoose"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:shadowColor="#EC2A2A"
         android:text="Valitse"
+        android:textColor="#FFFFFF"
+        android:textColorLink="#FFFFFF"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/exerciseName"
