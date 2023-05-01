@@ -42,6 +42,9 @@ public class Workout implements Serializable {
     public void clearTempExercises() {
         tempExercises.clear();
     }
+    public void removeOneTempExercise(int position) {
+        tempExercises.remove(position);
+    }
     public void addExercise(ArrayList<Exercise> tempExercises) {
         exercises.addAll(tempExercises);
     }

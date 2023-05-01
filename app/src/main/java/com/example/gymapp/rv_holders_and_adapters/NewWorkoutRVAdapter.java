@@ -10,11 +10,11 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.gymapp.Exercise;
 import com.example.gymapp.R;
+import com.example.gymapp.Workout;
 
 import java.util.ArrayList;
 
-public class NewWorkoutRVAdapter extends RecyclerView.Adapter<NewWorkoutRVHolder> implements OnItemLongClickListener {
-    private OnItemLongClickListener onItemLongClickListener;
+public class NewWorkoutRVAdapter extends RecyclerView.Adapter<NewWorkoutRVHolder> {
     private final Context context;
     private ArrayList<Exercise> exercises = new ArrayList<>();
 
@@ -22,18 +22,6 @@ public class NewWorkoutRVAdapter extends RecyclerView.Adapter<NewWorkoutRVHolder
         this.context = context;
         this.exercises = exercises;
     }
-    public OnItemLongClickListener getOnItemLongClickListener() { return onItemLongClickListener; }
-
-    public void setOnItemLongClickListener(OnItemLongClickListener onItemLongClickListener) {
-        this.onItemLongClickListener = onItemLongClickListener;
-    }
-
-    @Override
-    public int onItemLongClick(int position) {
-        return position;
-    }
-    @Override
-    public void setOnItemLongClickListener() {};
 
     @NonNull
     @Override
@@ -63,17 +51,10 @@ public class NewWorkoutRVAdapter extends RecyclerView.Adapter<NewWorkoutRVHolder
             dynamicTxtRVWeight = dynamicTxtRVWeight.concat(exercises.get(position).getWorkoutWeights().get(i) + "kg\n");
         }
         holder.dynamicTxtRVWeight.setText(dynamicTxtRVWeight);
-
-        // edit or remove option
-        holder.itemView.setOnLongClickListener(new View.OnLongClickListener() {
-            @Override
-            public boolean onLongClick(View view) {
-                if (onItemLongClickListener != null) {
-                    onItemLongClickListener.onItemLongClick(position);
-                    return true;
-                }
-                return false;
-            }
+        // Remove option
+        holder.imgDelete.setOnClickListener(view -> {
+            int pos = holder.getAdapterPosition();
+            Workout.getInstance().removeOneTempExercise(position);
         });
     }
 

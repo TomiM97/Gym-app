@@ -25,7 +25,6 @@ import com.example.gymapp.R;
 import com.example.gymapp.User;
 import com.example.gymapp.Workout;
 import com.example.gymapp.rv_holders_and_adapters.NewWorkoutRVAdapter;
-import com.example.gymapp.rv_holders_and_adapters.OnItemLongClickListener;
 
 import java.text.DateFormat;
 import java.text.ParseException;
@@ -39,7 +38,7 @@ import java.util.Locale;
  * A simple {@link Fragment} subclass.
  * create an instance of this fragment.
  */
-public class fragmentNewWorkout extends Fragment implements OnItemLongClickListener {
+public class fragmentNewWorkout extends Fragment {
     private Button btnSaveWorkout, addExercise;
     private int sets;
     private EditText textWorkoutType, repsInteger, weightsFloat, repsInteger2, weightsFloat2,
@@ -258,18 +257,4 @@ public class fragmentNewWorkout extends Fragment implements OnItemLongClickListe
         });
         return view;
     }
-    // remove or edit option
-
-    @Override
-    public int onItemLongClick(int position) {
-        System.out.println("jee jotain toimii");
-        return position;
-    }
-
-    @Override
-    public void setOnItemLongClickListener() {
-
-    }
-
-
 }

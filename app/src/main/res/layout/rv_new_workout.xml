@@ -1,24 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginStart="5dp"
     android:layout_marginTop="5dp"
     android:layout_marginEnd="5dp"
     android:layout_marginBottom="2dp"
-    android:background="#B9EC7F"
+    android:background="#FFDD00"
     android:orientation="horizontal">
 
     <LinearLayout
-        android:layout_width="match_parent"
+        android:id="@+id/rvExercise"
+        android:layout_width="320dp"
         android:layout_height="match_parent"
         android:layout_marginStart="5dp"
         android:layout_marginTop="5dp"
         android:layout_marginEnd="5dp"
         android:layout_marginBottom="2dp"
-        android:orientation="vertical"
-        android:id="@+id/rvExercise"
-        android:background="#E0EAD4">
+        android:orientation="vertical">
 
         <TextView
             android:id="@+id/txtRVWorkoutType"
@@ -56,6 +56,17 @@
         </LinearLayout>
 
     </LinearLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <Button
+            android:id="@+id/button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Poista" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 
 </androidx.appcompat.widget.LinearLayoutCompat>
