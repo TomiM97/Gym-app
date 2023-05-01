@@ -9,6 +9,7 @@ import android.os.Bundle;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,6 +17,7 @@ import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.gymapp.MainActivity;
 import com.example.gymapp.R;
@@ -114,48 +116,59 @@ public class FragmentWeight extends Fragment {
         btnAddWeight.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Float inputWeight = Float.parseFloat(editWeight.getText().toString());
-                Date date1;
-                try {
-                    date1=new SimpleDateFormat("dd.MM.yyyy").parse(
-                            String.format(Locale.getDefault(), "%02d.%02d.%04d",
-                                    calendar.get(Calendar.DAY_OF_MONTH),
-                                    calendar.get(Calendar.MONTH) + 1,
-                                    calendar.get(Calendar.YEAR)
-                            )
-                    );
-                } catch (ParseException e) {
-                    throw new RuntimeException(e);
-                }
-                Weight weight = new Weight(inputWeight, date1);
-                User.getInstance().addWeight(weight);
+                Float inputWeight = null;
+                String out = editWeight.getText().toString();
+                if(out.isEmpty()) {
+                    Toast.makeText(getContext(), "Lisää paino", Toast.LENGTH_SHORT).show();
+                } else {
+                    inputWeight = Float.parseFloat(out);
+                    Date date1;
+                    try {
+                        date1=new SimpleDateFormat("dd.MM.yyyy").parse(
+                                String.format(Locale.getDefault(), "%02d.%02d.%04d",
+                                        calendar.get(Calendar.DAY_OF_MONTH),
+                                        calendar.get(Calendar.MONTH) + 1,
+                                        calendar.get(Calendar.YEAR)
+                                )
+                        );
+                    } catch (ParseException e) {
+                        throw new RuntimeException(e);
+                    }
 
-                editWeight.setText("");
-                editDate.setText(dateString);
+                    Weight weight = new Weight(inputWeight, date1);
+                    User.getInstance().addWeight(weight);
 
-                weightGraph.removeSeries(weightGraph.getSeries().get(0));
-                // constructing graphView
-                LineGraphSeries<DataPoint> series = new LineGraphSeries<DataPoint>();
-                // constructing weights ArrayList
-                ArrayList<Float> weights = new ArrayList<>();
-                for(Weight loopWeight : User.getInstance().getWeightList()) {
-                    weights.add(loopWeight.weightFloat);
+                    // saving the weight data
+                    User.getInstance().saveWeightData(getContext());
+
+                    editWeight.setText("");
+                    editDate.setText(dateString);
+
+                    weightGraph.removeSeries(weightGraph.getSeries().get(0));
+                    // constructing graphView
+                    LineGraphSeries<DataPoint> series = new LineGraphSeries<DataPoint>();
+                    // constructing weights ArrayList
+                    ArrayList<Float> weights = new ArrayList<>();
+                    for(Weight loopWeight : User.getInstance().getWeightList()) {
+                        weights.add(loopWeight.weightFloat);
+                    }
+                    // constructing dates ArrayList
+                    ArrayList<Date> dates = new ArrayList<>();
+                    for(Weight loopWeight : User.getInstance().getWeightList()) {
+                        dates.add(loopWeight.date);
+                    }
+                    Collections.sort(dates);
+                    Float weight1;
+                    Date date2;
+                    for(int i = 0; i<weights.size(); i++) {
+                        weight1 = weights.get(i);
+                        date2 = dates.get(i);
+                        series.appendData(new DataPoint(date2, weight1), true, 90);
+                    }
+                    weightGraph.addSeries(series);
                 }
-                // constructing dates ArrayList
-                ArrayList<Date> dates = new ArrayList<>();
-                for(Weight loopWeight : User.getInstance().getWeightList()) {
-                    dates.add(loopWeight.date);
                 }
-                Collections.sort(dates);
-                Float weight1;
-                Date date2;
-                for(int i = 0; i<weights.size(); i++) {
-                    weight1 = weights.get(i);
-                    date2 = dates.get(i);
-                    series.appendData(new DataPoint(date2, weight1), true, 90);
-                }
-                weightGraph.addSeries(series);
-            }
+
         });
 
         return view;

@@ -1,9 +1,10 @@
 package com.example.gymapp;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 
-public class Weight {
+public class Weight implements Serializable {
     public ArrayList<Date> dates = new ArrayList<>();
     public ArrayList<Float> weightFloats = new ArrayList<>();
     public Float weightFloat;

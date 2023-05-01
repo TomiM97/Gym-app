@@ -4,11 +4,12 @@ import android.content.Context;
 
 import com.example.gymapp.rv_holders_and_adapters.NewWorkoutRVAdapter;
 
+import java.io.Serializable;
 import java.sql.Time;
 import java.util.ArrayList;
 import java.util.Date;
 
-public class Workout {
+public class Workout implements Serializable {
     private static Workout workoutInstance = null;
     public ArrayList<Exercise> exercises;
     public ArrayList<Exercise> tempExercises;

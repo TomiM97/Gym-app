@@ -3,17 +3,24 @@ package com.example.gymapp;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager2.widget.ViewPager2;
 
+import android.content.Context;
 import android.os.Bundle;
 
 import com.google.android.material.tabs.TabLayout;
 import com.jjoe64.graphview.GraphView;
 
 public class MainActivity extends AppCompatActivity {
+    Context context;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        // loading the previous data
+        context = MainActivity.this;
+        User.getInstance().loadWeightData(this);
+        User.getInstance().loadWorkoutData(this);
 
         TabLayout tabLayout = findViewById(R.id.tabArea);
 
