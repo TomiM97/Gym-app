@@ -52,9 +52,10 @@ public class NewWorkoutRVAdapter extends RecyclerView.Adapter<NewWorkoutRVHolder
         }
         holder.dynamicTxtRVWeight.setText(dynamicTxtRVWeight);
         // Remove option
-        holder.imgDelete.setOnClickListener(view -> {
+        holder.btnDelete.setOnClickListener(view -> {
             int pos = holder.getAdapterPosition();
             Workout.getInstance().removeOneTempExercise(position);
+            notifyDataSetChanged();
         });
     }
 

@@ -1,6 +1,7 @@
 package com.example.gymapp.rv_holders_and_adapters;
 
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -15,7 +16,7 @@ import com.example.gymapp.Workout;
 
 public class NewWorkoutRVHolder extends RecyclerView.ViewHolder {
     public TextView txtRVExerciseName, dynamicTxtRVSets, dynamicTxtRVRep, dynamicTxtRVWeight;
-    public ImageView imgDelete;
+    public Button btnDelete;
 
     public NewWorkoutRVHolder(@NonNull View itemView) {
         super(itemView);
@@ -23,7 +24,7 @@ public class NewWorkoutRVHolder extends RecyclerView.ViewHolder {
         dynamicTxtRVSets = itemView.findViewById(R.id.dynamicTxtRVSets);
         dynamicTxtRVRep = itemView.findViewById(R.id.dynamicTxtRVRep);
         dynamicTxtRVWeight = itemView.findViewById(R.id.dynamicTxtRVWeight);
-        imgDelete = itemView.findViewById(R.id.imgDelete);
+        btnDelete = itemView.findViewById(R.id.btnDelete);
 
         // remove or edit option
     }
