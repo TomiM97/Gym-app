@@ -38,7 +38,7 @@ public class oneExerciseAdapter extends RecyclerView.Adapter<oneExerciseHolder> 
     }
 
     public void onBindViewHolder(@NonNull oneExerciseHolder holder, int position) {
-        holder.exerciseName.setText(Workout.getInstance().exerciseNames.get(position));
+        holder.exerciseName.setText(Workout.getInstance().getExerciseNamesForDropDownMenu(exercises).get(position));
         Log.d(TAG, position + "tässä position");
 
         holder.rvChoose.setOnClickListener(new View.OnClickListener() {
@@ -52,7 +52,7 @@ public class oneExerciseAdapter extends RecyclerView.Adapter<oneExerciseHolder> 
     }
 
     public int getItemCount() {
-        return Workout.getInstance().exerciseNames.size();
+        return Workout.getInstance().getExerciseNamesForDropDownMenu(exercises).size();
     }
 
     @Override

@@ -13,7 +13,7 @@ public class Workout implements Serializable {
     private static Workout workoutInstance = null;
     public ArrayList<Exercise> exercises;
     public ArrayList<Exercise> tempExercises;
-    public ArrayList<String> exerciseNames = new ArrayList<>();
+
     public String workoutType;
     public Time workoutTime;
     public Date workoutDate;
@@ -52,6 +52,7 @@ public class Workout implements Serializable {
     public String getWorkoutType() { return workoutType; }
 
     public ArrayList<String> getExerciseNamesForDropDownMenu(ArrayList<Exercise> exercises) {
+        ArrayList<String> exerciseNames = new ArrayList<>();
         for(int i = 0; i < exercises.size(); i++ ) {
             Boolean addToList = true;
             for(int i2 = 0; i2 < exerciseNames.size(); i2++)  {
