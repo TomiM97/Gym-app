@@ -76,6 +76,7 @@ public class ListExercisesActivity extends AppCompatActivity implements MyListen
     }
 
     private void init(int pos){
+        xYplotValuearray.clear();
         Collections.sort(Workout.getInstance().exercises.get(pos).workoutWeights, Float::compare);
         ScatterPlot.removeAllSeries();
         xySeries = new PointsGraphSeries<>();
