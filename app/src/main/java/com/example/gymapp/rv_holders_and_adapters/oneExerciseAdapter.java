@@ -7,15 +7,16 @@ import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
-
+import android.util.Log;
 import com.example.gymapp.Exercise;
 import com.example.gymapp.R;
+import com.example.gymapp.Workout;
 
 import java.util.ArrayList;
 
 public class oneExerciseAdapter extends RecyclerView.Adapter<oneExerciseHolder> implements MyListener {
 
-
+    private static final String TAG = "MainActivity";
     private MyListener myListener;
     private final Context context;
     private ArrayList<Exercise> exercises = new ArrayList<>();
@@ -37,7 +38,9 @@ public class oneExerciseAdapter extends RecyclerView.Adapter<oneExerciseHolder> 
     }
 
     public void onBindViewHolder(@NonNull oneExerciseHolder holder, int position) {
-        holder.exerciseName.setText(exercises.get(position).exerciseName);
+        holder.exerciseName.setText(Workout.getInstance().exerciseNames.get(position));
+        Log.d(TAG, position + "tässä position");
+
         holder.rvChoose.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -49,7 +52,7 @@ public class oneExerciseAdapter extends RecyclerView.Adapter<oneExerciseHolder> 
     }
 
     public int getItemCount() {
-        return exercises.size();
+        return Workout.getInstance().exerciseNames.size();
     }
 
     @Override

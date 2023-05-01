@@ -50,8 +50,8 @@ public class ListExercisesActivity extends AppCompatActivity implements MyListen
 
         ScatterPlot = (GraphView) findViewById(R.id.progressgraph);
         view = findViewById(R.id.rvExerciselist);
-
         btnRvchoose = view.findViewById(R.id.rvChoose);
+
         xYplotValuearray = new ArrayList<>();
         view.setLayoutManager(new LinearLayoutManager(this));
         view.setAdapter(new oneExerciseAdapter(getApplicationContext(),workout.getExercises()));
@@ -77,14 +77,18 @@ public class ListExercisesActivity extends AppCompatActivity implements MyListen
     private void init(int pos){
         xySeries = new PointsGraphSeries<>();
         Log.d(TAG, "tullaanko tänne nro4");
-        double y = Workout.getInstance().getExercises().get(pos).getMaxWeight();
-                    Log.d(TAG, "onClick: lisätään pisteet (x,y) " + pos + "," + y + ")");
-                    xYplotValuearray.add(new XYplotValues(pos,y));
-                    if (xYplotValuearray.size() != 0) {
-                        createScatterplot();
-                    } else {
-                        Log.d(TAG, "Ei dataa kuvaan");
-                    }
+
+        for (int i=0; i < Workout.getInstance().exercises.get(pos).sets; i++) {
+            double x = i;
+            double y = Workout.getInstance().getExercises().get(pos).workoutWeights.get(i);
+                    Log.d(TAG, "onClick: lisätään pisteet (x,y) " + pos + ", " + y + ")");
+                    xYplotValuearray.add(new XYplotValues(x, y));
+        }
+            if (xYplotValuearray.size() != 0) {
+                createScatterplot();
+            } else {
+                Log.d(TAG, "Ei dataa kuvaan");
+            }
                 }
 
     private void createScatterplot() {
@@ -108,40 +112,6 @@ public class ListExercisesActivity extends AppCompatActivity implements MyListen
 
     }
 
-    private ArrayList<XYplotValues> sortArray(ArrayList<XYplotValues> array) {
-        int factor = Integer.parseInt(String.valueOf(Math.round((Math.pow(array.size(),2)))));
-        int m = array.size() - 1;
-        int count = 0;
-        Log.d(TAG,"Järjestetään lista");
-            while(true) {
-                m--;
-                if (m <= 0) {
-                    m = array.size() - 1;
-                }
-                try {
-                    double tempY = array.get(m - 1).getY();
-                    double tempX = array.get(m - 1).getX();
-                    if (tempX > array.get(m).getX()) {
-                        array.get(m - 1).setY(array.get(m).getY());
-                        array.get(m).setY(tempY);
-                        array.get(m - 1).setX(array.get(m).getX());
-                        array.get(m).setX(tempX);
-                    } else if (tempX == array.get(m).getX()) {
-                        count++;
-                        Log.d(TAG, "sortArray" + count);
-                    } else if (array.get(m).getX() > array.get(m - 1).getX()) {
-                        count++;
-                        Log.d(TAG, "sortArray" + count);
-                    }
-                    if (count == factor) {
-                        break;
-                    }
-                } catch (ArrayIndexOutOfBoundsException e){
-                    Log.e(TAG, "sortArray: ArrayIndexOutOfBoundsException, tarvitaan enemmän kuin yksi datapiste" + e.getMessage());
-                }
-            }
-            return array;
-   }
 }
 
 
