@@ -42,13 +42,13 @@
         android:id="@+id/txtWeightsFloat"
         android:layout_width="106dp"
         android:layout_height="48dp"
+        android:layout_marginStart="4dp"
         android:layout_marginTop="8dp"
         android:ems="10"
         android:hint="Paino (kg)"
         android:inputType="numberDecimal"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.95"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/txtRepInteger"
         app:layout_constraintTop_toBottomOf="@+id/txtReps" />
 
     <EditText
@@ -67,13 +67,13 @@
         android:id="@+id/txtWeightsFloat2"
         android:layout_width="106dp"
         android:layout_height="48dp"
+        android:layout_marginStart="4dp"
         android:layout_marginTop="8dp"
         android:ems="10"
         android:hint="Paino (kg)"
         android:inputType="numberDecimal"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.95"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/txtRepInteger2"
         app:layout_constraintTop_toBottomOf="@+id/txtWeightsFloat" />
 
     <EditText
@@ -92,13 +92,13 @@
         android:id="@+id/txtWeightsFloat3"
         android:layout_width="106dp"
         android:layout_height="48dp"
+        android:layout_marginStart="4dp"
         android:layout_marginTop="8dp"
         android:ems="10"
         android:hint="Paino (kg)"
         android:inputType="numberDecimal"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.95"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/txtRepInteger3"
         app:layout_constraintTop_toBottomOf="@+id/txtWeightsFloat2" />
 
     <EditText
@@ -117,13 +117,13 @@
         android:id="@+id/txtWeightsFloat4"
         android:layout_width="106dp"
         android:layout_height="48dp"
+        android:layout_marginStart="4dp"
         android:layout_marginTop="8dp"
         android:ems="10"
         android:hint="Paino (kg)"
         android:inputType="numberDecimal"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.95"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/txtRepInteger4"
         app:layout_constraintTop_toBottomOf="@+id/txtWeightsFloat3" />
 
     <EditText
@@ -142,13 +142,13 @@
         android:id="@+id/txtWeightsFloat5"
         android:layout_width="106dp"
         android:layout_height="48dp"
+        android:layout_marginStart="4dp"
         android:layout_marginTop="8dp"
         android:ems="10"
         android:hint="Paino (kg)"
         android:inputType="numberDecimal"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.95"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/txtRepInteger5"
         app:layout_constraintTop_toBottomOf="@+id/txtWeightsFloat4" />
 
     <EditText
@@ -167,13 +167,13 @@
         android:id="@+id/txtWeightsFloat6"
         android:layout_width="106dp"
         android:layout_height="48dp"
+        android:layout_marginStart="4dp"
         android:layout_marginTop="8dp"
         android:ems="10"
         android:hint="Paino (kg)"
         android:inputType="numberDecimal"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.95"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/txtRepInteger6"
         app:layout_constraintTop_toBottomOf="@+id/txtWeightsFloat5" />
 
     <Button
@@ -182,8 +182,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:text="Lisää liike"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintEnd_toStartOf="@+id/btnCancelPopup"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtRepInteger6" />
 

@@ -25,7 +25,5 @@ public class NewWorkoutRVHolder extends RecyclerView.ViewHolder {
         dynamicTxtRVRep = itemView.findViewById(R.id.dynamicTxtRVRep);
         dynamicTxtRVWeight = itemView.findViewById(R.id.dynamicTxtRVWeight);
         btnDelete = itemView.findViewById(R.id.btnDelete);
-
-        // remove or edit option
     }
 }

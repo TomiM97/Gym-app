@@ -15,7 +15,6 @@ public class Workout implements Serializable {
     public ArrayList<Exercise> tempExercises;
 
     public String workoutType;
-    public Time workoutTime;
     public Date workoutDate;
     public Context context;
 
