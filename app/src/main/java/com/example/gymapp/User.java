@@ -146,10 +146,10 @@ public class User {
             groceriesWriter.writeObject(weightList);
             groceriesWriter.close();
         } catch (FileNotFoundException e) {
-            System.out.println("Ostosten tallentaminen epäonnistui");
+            System.out.println("Kehonpainojen tallentaminen epäonnistui");
             e.printStackTrace();
         } catch (IOException e) {
-            System.out.println("Ostosten tallentaminen epäonnistui");
+            System.out.println("Kehonpainojen tallentaminen epäonnistui");
             e.printStackTrace();
         }
     }
