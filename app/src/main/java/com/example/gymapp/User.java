@@ -98,13 +98,13 @@ public class User {
             workouts = (ArrayList<Workout>) groceryReader.readObject();
             groceryReader.close();
         } catch (FileNotFoundException e) {
-            System.out.println("Ostosten lataaminen epäonnistui");
+            System.out.println("Treenien lataaminen epäonnistui");
             e.printStackTrace();
         } catch (IOException e) {
-            System.out.println("Ostosten lataaminen epäonnistui");
+            System.out.println("Treenien lataaminen epäonnistui");
             e.printStackTrace();
         } catch (ClassNotFoundException e) {
-            System.out.println("Ostosten lataaminen epäonnistui");
+            System.out.println("Treenien lataaminen epäonnistui");
             e.printStackTrace();
         }
     }
@@ -115,13 +115,13 @@ public class User {
             weightList = (ArrayList<Weight>) groceryReader.readObject();
             groceryReader.close();
         } catch (FileNotFoundException e) {
-            System.out.println("Ostosten lataaminen epäonnistui");
+            System.out.println("Kehonpainojen lataaminen epäonnistui");
             e.printStackTrace();
         } catch (IOException e) {
-            System.out.println("Ostosten lataaminen epäonnistui");
+            System.out.println("Kehonpainojen lataaminen epäonnistui");
             e.printStackTrace();
         } catch (ClassNotFoundException e) {
-            System.out.println("Ostosten lataaminen epäonnistui");
+            System.out.println("Kehonpainojen lataaminen epäonnistui");
             e.printStackTrace();
         }
     }
@@ -132,10 +132,10 @@ public class User {
             groceriesWriter.writeObject(workouts);
             groceriesWriter.close();
         } catch (FileNotFoundException e) {
-            System.out.println("Ostosten tallentaminen epäonnistui");
+            System.out.println("Treenien tallentaminen epäonnistui");
             e.printStackTrace();
         } catch (IOException e) {
-            System.out.println("Ostosten tallentaminen epäonnistui");
+            System.out.println("Treenien tallentaminen epäonnistui");
             e.printStackTrace();
         }
     }
@@ -146,10 +146,10 @@ public class User {
             groceriesWriter.writeObject(weightList);
             groceriesWriter.close();
         } catch (FileNotFoundException e) {
-            System.out.println("Ostosten tallentaminen epäonnistui");
+            System.out.println("Kehonpainojen tallentaminen epäonnistui");
             e.printStackTrace();
         } catch (IOException e) {
-            System.out.println("Ostosten tallentaminen epäonnistui");
+            System.out.println("Kehonpainojen tallentaminen epäonnistui");
             e.printStackTrace();
         }
     }
