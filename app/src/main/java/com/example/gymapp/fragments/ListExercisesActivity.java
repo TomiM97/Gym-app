@@ -86,12 +86,10 @@ public class ListExercisesActivity extends AppCompatActivity implements MyListen
                     int i2 = Workout.getInstance().exercises.get(i).sets;
                     Log.d(TAG, "tämä on i2 " + i2);
                     for(int d=0; d < i2; d++){
-                        Workout.getInstance().getExercises().get(i).workoutWeights.sort(Float::compare);
                         double y = Workout.getInstance().getExercises().get(pos).workoutWeights.get(d);
                         Log.d(TAG, "onClick: lisätään pisteet (x,y) " + d + ", " + y + ")");
                         xYplotValuearray.add(new XYplotValues(d, y));
                         if(i != pos) {
-                            Workout.getInstance().getExercises().get(pos).workoutWeights.sort(Float::compare);
                             double y2 = Workout.getInstance().getExercises().get(i).workoutWeights.get(d);
                             Log.d(TAG, "onClick: lisätään toiset pisteet (x,y) " + (d+i2) + ", " + y2 + ")");
                             xYplotValuearray.add(new XYplotValues((d+i2), y2));
