@@ -8,16 +8,21 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="#2D2D2D">
 
         <EditText
             android:id="@+id/editWeight"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="30dp"
+            android:backgroundTint="#FFFFFF"
             android:ems="10"
             android:hint="Anna paino (kg)"
             android:inputType="numberDecimal"
+            android:textColor="#FFFFFF"
+            android:textColorHighlight="#FFFFFF"
+            android:textColorHint="#C8C8C8"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -37,6 +42,7 @@
             android:layout_width="400dp"
             android:layout_height="400dp"
             android:layout_marginTop="8dp"
+            android:background="#649646"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/btnAddWeight">
@@ -49,8 +55,11 @@
             android:layout_height="50dp"
             android:layout_marginTop="30dp"
             android:ems="10"
-            android:text="@string/date_current"
             android:gravity="center"
+            android:text="@string/date_current"
+            android:textColor="#C8C8C8"
+            android:textColorHighlight="#FFFFFF"
+            android:textColorHint="#C8C8C8"
             android:textSize="20sp"
             app:layout_constraintEnd_toEndOf="@+id/editWeight"
             app:layout_constraintStart_toStartOf="@+id/editWeight"

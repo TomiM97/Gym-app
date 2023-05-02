@@ -10,8 +10,8 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#0E254A"
-        android:backgroundTint="#0E254A">
+        android:background="#B4B4B4"
+        android:backgroundTint="#3C3C3C">
 
         <Button
             android:id="@+id/btnshowExercise"
@@ -28,7 +28,7 @@
             android:id="@+id/textdd"
             android:layout_width="259dp"
             android:layout_height="239dp"
-            android:background="#0E254A"
+            android:background="#3C3C3C"
             android:contextClickable="false"
             android:text="Valitse liike -sivulla Graafi näyttää valitsemasi liikkeen kehityksen sarjojen välillä. Graafi automaattisesti päivittää sarjat suuruusjärjestykseen"
             android:textColor="#FF5353"
