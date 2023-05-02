@@ -6,6 +6,7 @@ import java.util.Collections;
 import java.util.Date;
 
 public class Exercise implements Serializable {
+    private static final long serialVersionUID = 563393952650790060L;
     public ArrayList<Float> workoutWeights;
     public int sets;
     public ArrayList<Integer> reps;

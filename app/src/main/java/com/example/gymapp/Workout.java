@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.Date;
 
 public class Workout implements Serializable {
+    private static final long serialVersionUID = 5111057236595500206L;
     private static Workout workoutInstance = null;
     public ArrayList<Exercise> exercises;
     public ArrayList<Exercise> tempExercises;
