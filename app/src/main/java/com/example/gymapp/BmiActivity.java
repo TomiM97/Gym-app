@@ -66,6 +66,8 @@ public class BmiActivity extends AppCompatActivity {
                         }
                     }
                 }
+                editBmiHeight.setText("");
+                editBmiWeight.setText("");
             }
         });
 
