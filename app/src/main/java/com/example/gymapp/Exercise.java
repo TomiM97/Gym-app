@@ -1,10 +1,11 @@
 package com.example.gymapp;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Date;
 
-public class Exercise {
+public class Exercise implements Serializable {
     public ArrayList<Float> workoutWeights;
     public int sets;
     public ArrayList<Integer> reps;
