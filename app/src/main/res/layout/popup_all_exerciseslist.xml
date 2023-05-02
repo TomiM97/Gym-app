@@ -10,6 +10,7 @@
         android:id="@+id/rvExerciselist"
         android:layout_width="412dp"
         android:layout_height="300dp"
+        android:background="#64E641"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.6"
         app:layout_constraintStart_toStartOf="parent"
@@ -21,6 +22,7 @@
         android:id="@+id/progressgraph"
         android:layout_width="403dp"
         android:layout_height="425dp"
+        android:background="#64E641"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/rvExerciselist">
