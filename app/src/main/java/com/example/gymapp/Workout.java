@@ -50,8 +50,6 @@ public class Workout implements Serializable {
     public ArrayList<Exercise> getExercises() { return exercises; }
     public ArrayList<Exercise> getTempExercises() { return tempExercises; }
 
-    public String getWorkoutType() { return workoutType; }
-
     public ArrayList<String> getExerciseNamesForDropDownMenu(ArrayList<Exercise> exercises) {
         ArrayList<String> exerciseNames = new ArrayList<>();
         for(int i = 0; i < exercises.size(); i++ ) {

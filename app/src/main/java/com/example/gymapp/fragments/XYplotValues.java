@@ -12,19 +12,8 @@ public class XYplotValues {
         return x;
     }
 
-    public void setX(double x) {
-        this.x = x;
-    }
-
     public double getY() {
         return y;
     }
 
-    public void setY(double y) {
-        this.y = y;
-    }
-
-    public <T> Comparable getItem() {
-        return null;
-    }
 }

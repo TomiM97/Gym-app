@@ -30,7 +30,7 @@
             android:layout_height="239dp"
             android:background="#3C3C3C"
             android:contextClickable="false"
-            android:text="Valitse liike -sivulla Graafi näyttää valitsemasi liikkeen kehityksen sarjojen välillä. Graafi automaattisesti päivittää sarjat suuruusjärjestykseen"
+            android:text="Valitse liike -sivulla Graafi näyttää valitsemasi liikkeen kehityksen sarjojen välillä!"
             android:textColor="#FF5353"
             android:textSize="24sp"
             app:layout_constraintBottom_toBottomOf="parent"
