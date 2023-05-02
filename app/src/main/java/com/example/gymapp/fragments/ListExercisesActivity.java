@@ -44,6 +44,7 @@ public class ListExercisesActivity extends AppCompatActivity implements MyListen
 
     public ListExercisesActivity() {
     }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -58,6 +59,7 @@ public class ListExercisesActivity extends AppCompatActivity implements MyListen
         view.setLayoutManager(new LinearLayoutManager(this));
         view.setAdapter(new oneExerciseAdapter(getApplicationContext(),workout.getExercises()));
         oneExerciseAdapter adapter = new oneExerciseAdapter(getApplicationContext(),workout.getExercises());
+
         adapter.setMyListener(new MyListener() {
             @Override
             public int onButtonClick(int position) {
@@ -74,7 +76,7 @@ public class ListExercisesActivity extends AppCompatActivity implements MyListen
 
         view.setAdapter(adapter);
     }
-
+    //in the method init(), datapoints are collected from the exercises sets&reps to arraylist
     private void init(int pos){
         xYplotValuearray.clear();
 
@@ -84,16 +86,13 @@ public class ListExercisesActivity extends AppCompatActivity implements MyListen
         for (int i=0; i < Workout.getInstance().exercises.size(); i++) {
                 if (Workout.getInstance().exercises.get(pos).exerciseName.equals(Workout.getInstance().exercises.get(i).getExerciseName())){
                     int i2 = Workout.getInstance().exercises.get(i).sets;
-                    Log.d(TAG, "tämä on i2 " + i2);
                     for(int d=0; d < i2; d++){
-                        Workout.getInstance().getExercises().get(i).workoutWeights.sort(Float::compare);
                         double y = Workout.getInstance().getExercises().get(pos).workoutWeights.get(d);
-                        Log.d(TAG, "onClick: lisätään pisteet (x,y) " + d + ", " + y + ")");
+                        Log.d(TAG, "onClick: adding points (x,y) " + d + ", " + y + ")");
                         xYplotValuearray.add(new XYplotValues(d, y));
                         if(i != pos) {
-                            Workout.getInstance().getExercises().get(pos).workoutWeights.sort(Float::compare);
                             double y2 = Workout.getInstance().getExercises().get(i).workoutWeights.get(d);
-                            Log.d(TAG, "onClick: lisätään toiset pisteet (x,y) " + (d+i2) + ", " + y2 + ")");
+                            Log.d(TAG, "onClick: adding another points (x,y) " + (d+i2) + ", " + y2 + ")");
                             xYplotValuearray.add(new XYplotValues((d+i2), y2));
                         }
                     }
@@ -102,21 +101,20 @@ public class ListExercisesActivity extends AppCompatActivity implements MyListen
             if (xYplotValuearray.size() != 0) {
                 createScatterplot();
             } else {
-                Log.d(TAG, "Ei dataa kuvaan");
+                Log.d(TAG, "no data for graph");
             }
                 }
 
     private void createScatterplot() {
-        Log.d(TAG, "Tehdään kuva!");
-        //järjestetään lista...
-        //sortArray(xYplotValuearray);
+        Log.d(TAG, "Creating the graph");
+
         for(int i = 0; i < xYplotValuearray.size(); i++) {
             try {
                 double x = xYplotValuearray.get(i).getX();
                 double y = xYplotValuearray.get(i).getY();
                 xySeries.appendData(new DataPoint(x,y),true,1000);
             } catch (IllegalArgumentException e){
-                Log.e(TAG, "Tehdään kuvaa: IllegalArgumentException" + e.getMessage());
+                Log.e(TAG, "exception log: IllegalArgumentException" + e.getMessage());
             }
         }
         xySeries.setShape(PointsGraphSeries.Shape.TRIANGLE);
