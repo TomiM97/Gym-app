@@ -13,7 +13,6 @@ public class Workout implements Serializable {
     private static Workout workoutInstance = null;
     public ArrayList<Exercise> exercises;
     public ArrayList<Exercise> tempExercises;
-
     public String workoutType;
     public Date workoutDate;
     public Context context;
@@ -43,6 +42,9 @@ public class Workout implements Serializable {
     }
     public void removeOneTempExercise(int position) {
         tempExercises.remove(position);
+    }
+    public void removeOneExercise(int position) {
+        exercises.remove(position);
     }
     public void addExercise(ArrayList<Exercise> tempExercises) {
         exercises.addAll(tempExercises);

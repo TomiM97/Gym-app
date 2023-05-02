@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.gymapp.Exercise;
 import com.example.gymapp.R;
+import com.example.gymapp.Workout;
 
 import java.util.ArrayList;
 
@@ -25,7 +26,7 @@ public class FrontPageRVAdapter extends RecyclerView.Adapter<FrontPageRVHolder> 
     @NonNull
     @Override
     public FrontPageRVHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        return new FrontPageRVHolder(LayoutInflater.from(context).inflate(R.layout.rv_new_workout, parent, false));
+        return new FrontPageRVHolder(LayoutInflater.from(context).inflate(R.layout.rv_workout, parent, false));
     }
 
     @Override
