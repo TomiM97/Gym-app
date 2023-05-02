@@ -29,23 +29,6 @@ public class User {
 
     public void addWorkoutsToList(Workout workout) {workouts.add(workout);}
 
-    public void setBmi(float bmi) {
-        this.bmi = bmi;
-    }
-
-    public float getHeight() {
-        return height;
-    }
-
-    public void setHeight(float height) {
-        this.height = height;
-    }
-
-
-
-    public float getBmi() {
-        return bmi;
-    }
 
     public void addWeight(Weight weight) {
         weightList.add(weight);
