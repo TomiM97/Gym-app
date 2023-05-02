@@ -4,13 +4,16 @@ import android.content.Context;
 
 import com.example.gymapp.rv_holders_and_adapters.NewWorkoutRVAdapter;
 
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.sql.Time;
 import java.util.ArrayList;
 import java.util.Date;
 
 public class Workout implements Serializable {
-    private static final long serialVersionUID = 5111057236595500206L;
     private static Workout workoutInstance = null;
     public ArrayList<Exercise> exercises;
     public ArrayList<Exercise> tempExercises;
@@ -65,6 +68,36 @@ public class Workout implements Serializable {
             }
         }
         return exerciseNames;
+    }
+    public void saveWorkoutData(Context context) {
+        try {
+            ObjectOutputStream workoutWriter = new ObjectOutputStream(context.openFileOutput("workouts.data", Context.MODE_PRIVATE));
+            workoutWriter.writeObject(exercises);
+            workoutWriter.close();
+        } catch (FileNotFoundException e) {
+            System.out.println("Treenien tallentaminen epäonnistui");
+            e.printStackTrace();
+        } catch (IOException e) {
+            System.out.println("Treenien tallentaminen epäonnistui");
+            e.printStackTrace();
+        }
+    }
+
+    public void loadWorkoutData(Context context) {
+        try {
+            ObjectInputStream workoutReader = new ObjectInputStream(context.openFileInput("workouts.data"));
+            exercises = (ArrayList<Exercise>) workoutReader.readObject();
+            workoutReader.close();
+        } catch (FileNotFoundException e) {
+            System.out.println("Treenien lataaminen epäonnistui");
+            e.printStackTrace();
+        } catch (IOException e) {
+            System.out.println("Treenien lataaminen epäonnistui");
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            System.out.println("Treenien lataaminen epäonnistui");
+            e.printStackTrace();
+        }
     }
 
 }

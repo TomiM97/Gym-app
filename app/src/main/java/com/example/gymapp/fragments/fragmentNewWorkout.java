@@ -128,7 +128,7 @@ public class fragmentNewWorkout extends Fragment {
                     recyclerView.getAdapter().notifyDataSetChanged();
                     textWorkoutType.setText("");
                     // save to a file
-                    User.getInstance().saveWorkoutData(getContext());
+                    Workout.getInstance().saveWorkoutData(getContext());
                 }
             }
         });

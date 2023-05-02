@@ -20,8 +20,8 @@ public class MainActivity extends AppCompatActivity {
 
         // loading the previous data
         context = MainActivity.this;
+        Workout.getInstance().loadWorkoutData(this);
         User.getInstance().loadWeightData(this);
-        User.getInstance().loadWorkoutData(this);
         System.out.println(Workout.getInstance().getExercises().size());
 
         TabLayout tabLayout = findViewById(R.id.tabArea);
