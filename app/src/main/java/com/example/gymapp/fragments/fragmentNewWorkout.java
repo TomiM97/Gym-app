@@ -120,6 +120,7 @@ public class fragmentNewWorkout extends Fragment {
                     }
                     Workout workout = new Workout(workoutType, workoutDate, Workout.getInstance().getExercises());
                     User.getInstance().addWorkoutsToList(workout);
+                    System.out.println(User.getInstance().workouts.size());
 
                     // Empty the RV list
                     ArrayList <Exercise> exercisesToBeDeleted = Workout.getInstance().tempExercises;

@@ -31,10 +31,10 @@
             android:id="@+id/btnAddWeight"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="30dp"
+            android:layout_marginStart="60dp"
+            android:layout_marginTop="28dp"
             android:text="Lisää paino"
-            app:layout_constraintEnd_toEndOf="@+id/editDate"
-            app:layout_constraintStart_toStartOf="@+id/editDate"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/editDate" />
 
         <com.jjoe64.graphview.GraphView
@@ -64,6 +64,17 @@
             app:layout_constraintEnd_toEndOf="@+id/editWeight"
             app:layout_constraintStart_toStartOf="@+id/editWeight"
             app:layout_constraintTop_toBottomOf="@+id/editWeight" />
+
+        <Button
+            android:id="@+id/btnToBmi"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="28dp"
+            android:text="Laske BMI"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.515"
+            app:layout_constraintStart_toEndOf="@+id/btnAddWeight"
+            app:layout_constraintTop_toBottomOf="@+id/editDate" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </FrameLayout>

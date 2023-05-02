@@ -1,15 +1,11 @@
 package com.example.gymapp.fragments;
 
 import android.app.DatePickerDialog;
-import android.content.Context;
 import android.content.Intent;
-import android.os.Build;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentTransaction;
 
-import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,16 +15,15 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.gymapp.MainActivity;
 import com.example.gymapp.R;
 import com.example.gymapp.User;
 import com.example.gymapp.Weight;
+import com.example.gymapp.BmiActivity;
 import com.jjoe64.graphview.GraphView;
 import com.jjoe64.graphview.GridLabelRenderer;
 import com.jjoe64.graphview.helper.DateAsXAxisLabelFormatter;
 import com.jjoe64.graphview.series.DataPoint;
 import com.jjoe64.graphview.series.LineGraphSeries;
-import com.jjoe64.graphview.series.Series;
 
 import java.text.DateFormat;
 import java.text.ParseException;
@@ -61,6 +56,7 @@ public class FragmentWeight extends Fragment {
         weightGraph.getGridLabelRenderer().setHorizontalLabelsAngle(45);
         weightGraph.getGridLabelRenderer().setVerticalAxisTitle("Paino (kg)");
         weightGraph.getGridLabelRenderer().setHorizontalAxisTitle("Päivämäärä");
+        Button btnToBMI = view.findViewById(R.id.btnToBmi);
 
 
         // automatic date fill
@@ -169,6 +165,14 @@ public class FragmentWeight extends Fragment {
                 }
                 }
 
+        });
+
+        btnToBMI.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getContext(), BmiActivity.class);
+                startActivity(intent);
+            }
         });
 
         return view;

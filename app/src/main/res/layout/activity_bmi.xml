@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".BmiActivity">
+
+    <EditText
+        android:id="@+id/editWeightBmi"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:ems="10"
+        android:hint="Anna painosi (x,x kg)"
+        android:inputType="numberDecimal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/editHeightBmi"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:ems="10"
+        android:hint="Anna pituutesi (x,x m)"
+        android:inputType="numberDecimal"
+        app:layout_constraintEnd_toEndOf="@+id/editWeightBmi"
+        app:layout_constraintStart_toStartOf="@+id/editWeightBmi"
+        app:layout_constraintTop_toBottomOf="@+id/editWeightBmi" />
+
+    <Button
+        android:id="@+id/btnCalcBmi"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="Laske BMI"
+        app:layout_constraintEnd_toEndOf="@+id/editHeightBmi"
+        app:layout_constraintStart_toStartOf="@+id/editHeightBmi"
+        app:layout_constraintTop_toBottomOf="@+id/editHeightBmi" />
+
+    <ImageView
+        android:id="@+id/tonyHalmeImg"
+        android:layout_width="300dp"
+        android:layout_height="300dp"
+        android:layout_marginTop="68dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textBmiOut"
+        app:srcCompat="@drawable/tonyhalme"
+        android:visibility="invisible"/>
+
+    <TextView
+        android:id="@+id/textBmiOut"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="28dp"
+        android:text="TextView"
+        app:layout_constraintEnd_toEndOf="@+id/btnCalcBmi"
+        app:layout_constraintStart_toStartOf="@+id/btnCalcBmi"
+        app:layout_constraintTop_toBottomOf="@+id/btnCalcBmi" />
+
+    <ImageView
+        android:id="@+id/puuroImg"
+        android:layout_width="300dp"
+        android:layout_height="300dp"
+        android:layout_marginTop="68dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textBmiOut"
+        app:srcCompat="@drawable/puuro"
+        android:visibility="invisible"/>
+
+    <ImageView
+        android:id="@+id/boyImg"
+        android:layout_width="300dp"
+        android:layout_height="300dp"
+        android:layout_marginTop="68dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textBmiOut"
+        app:srcCompat="@drawable/boy"
+        android:visibility="invisible"/>
+</androidx.constraintlayout.widget.ConstraintLayout>
