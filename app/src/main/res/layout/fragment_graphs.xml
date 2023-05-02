@@ -9,7 +9,9 @@
     <!-- TODO: Update blank fragment layout -->
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="#0E254A"
+        android:backgroundTint="#0E254A">
 
         <Button
             android:id="@+id/btnshowExercise"
@@ -24,11 +26,11 @@
 
         <TextView
             android:id="@+id/textdd"
-            android:layout_width="244dp"
-            android:layout_height="312dp"
+            android:layout_width="259dp"
+            android:layout_height="239dp"
             android:background="#0E254A"
             android:contextClickable="false"
-            android:text="Valitse liike -sivulla saat graafille liikkeesi kehityksen sarjojen välillä. Graafi automaattisesti päivittää sarjat suuruusjärjsetykseen"
+            android:text="Valitse liike -sivulla Graafi näyttää valitsemasi liikkeen kehityksen sarjojen välillä. Graafi automaattisesti päivittää sarjat suuruusjärjestykseen"
             android:textColor="#FF5353"
             android:textSize="24sp"
             app:layout_constraintBottom_toBottomOf="parent"

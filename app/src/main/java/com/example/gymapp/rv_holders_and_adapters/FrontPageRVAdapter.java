@@ -14,7 +14,7 @@ import java.util.ArrayList;
 
 public class FrontPageRVAdapter extends RecyclerView.Adapter<FrontPageRVHolder> {
 
-    private Context context;
+    private final Context context;
     private ArrayList<Exercise> exercises = new ArrayList<>();
 
     public FrontPageRVAdapter(Context context, ArrayList<Exercise> exercises) {

@@ -77,7 +77,10 @@ public class ListExercisesActivity extends AppCompatActivity implements MyListen
 
     private void init(int pos){
         xYplotValuearray.clear();
-        Collections.sort(Workout.getInstance().exercises.get(pos).workoutWeights, Float::compare);
+        for(int i=0;i<pos;i++){
+            Collections.sort(Workout.getInstance().getExercises().get(i).workoutWeights, Float::compare);
+        }
+
         ScatterPlot.removeAllSeries();
         xySeries = new PointsGraphSeries<>();
 
@@ -85,7 +88,7 @@ public class ListExercisesActivity extends AppCompatActivity implements MyListen
                 if (Workout.getInstance().exercises.get(pos).exerciseName.equals(Workout.getInstance().exercises.get(i).getExerciseName())){
                     for(int d=0; d<Workout.getInstance().exercises.get(i).sets; d++){
                         double y = Workout.getInstance().getExercises().get(i).workoutWeights.get(d);
-                        Log.d(TAG, "onClick: lisätään pisteet (x,y) " + pos + ", " + y + ")");
+                        Log.d(TAG, "onClick: lisätään pisteet (x,y) " + d + ", " + y + ")");
                         xYplotValuearray.add(new XYplotValues(d, y));
                     }
                 }

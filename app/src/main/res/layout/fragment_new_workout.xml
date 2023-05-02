@@ -9,7 +9,8 @@
     <!-- TODO: Update blank fragment layout -->
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="#646464">
 
 
         <Button
@@ -53,7 +54,7 @@
             android:layout_width="372dp"
             android:layout_height="507dp"
             android:layout_marginTop="30dp"
-            android:background="#E6E5E5"
+            android:background="#64AA64"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/btnAddExercise" />
