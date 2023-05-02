@@ -1,7 +1,6 @@
 package com.example.gymapp;
 
 import android.content.Context;
-import android.os.Build;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -16,23 +15,9 @@ public class User {
     public Weight weight;
     public ArrayList<Weight> weightList = new ArrayList<>();
     public float height;
-    public int age;
-    public Date birthDay;
-    private Date dateNow;
     private static User user = null;
 
     public User() {}
-    public User(float weight, float height, Date birthDay) {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            dateNow = new Date();
-        }
-        this.weight = new Weight(weight, dateNow);
-        addWeight(this.weight);
-        this.height = height;
-        this.birthDay = birthDay;
-        this.bmi = weight/(height*height);
-        //TODO this.age =
-    }
 
     public static User getInstance() {
         if(user == null) {
@@ -41,10 +26,6 @@ public class User {
         return user;
     }
 
-
-    public void setWorkouts(ArrayList<Workout> workouts) {
-        this.workouts = workouts;
-    }
 
     public void addWorkoutsToList(Workout workout) {workouts.add(workout);}
 
@@ -60,25 +41,7 @@ public class User {
         this.height = height;
     }
 
-    public int getAge() {
-        return age;
-    }
 
-    public void setAge(int age) {
-        this.age = age;
-    }
-
-    public Date getBirthDay() {
-        return birthDay;
-    }
-
-    public void setBirthDay(Date birthDay) {
-        this.birthDay = birthDay;
-    }
-
-    public ArrayList<Workout> getWorkouts() {
-        return workouts;
-    }
 
     public float getBmi() {
         return bmi;
